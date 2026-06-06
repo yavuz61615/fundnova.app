@@ -458,7 +458,7 @@ export default function HybridFundPlatform() {
           <div className="card text-center flex flex-col items-center hover:border-primary/50 transition-colors group">
             <div className="w-36 h-36 rounded-full overflow-hidden border-4 border-surface shadow-xl mb-6 relative">
               <div className="absolute inset-0 bg-primary/20 group-hover:bg-transparent transition-colors z-10"></div>
-              <img src="/screenshot_1.png" alt="Yusuf Gataullin" className="w-full h-full object-cover bg-background" onError={(e) => { e.target.src = 'https://ui-avatars.com/api/?name=Yusuf+Gataullin&background=random'; }} />
+              <img src="/Screenshot_1.png" alt="Yusuf Gataullin" className="w-full h-full object-cover bg-background" onError={(e) => { e.target.src = 'https://ui-avatars.com/api/?name=Yusuf+Gataullin&background=random'; }} />
             </div>
             <h4 className="text-2xl font-black text-textMain mb-1">Yusuf Gataullin</h4>
             <p className="text-primary font-bold text-sm uppercase tracking-widest">Kurucu Ortak & CEO</p>
@@ -467,7 +467,7 @@ export default function HybridFundPlatform() {
           <div className="card text-center flex flex-col items-center hover:border-primary/50 transition-colors group">
             <div className="w-36 h-36 rounded-full overflow-hidden border-4 border-surface shadow-xl mb-6 relative">
               <div className="absolute inset-0 bg-primary/20 group-hover:bg-transparent transition-colors z-10"></div>
-              <img src="/screenshot_2.png" alt="Yavuz Selim Şengül" className="w-full h-full object-cover bg-background" onError={(e) => { e.target.src = 'https://ui-avatars.com/api/?name=Yavuz+Selim&background=random'; }} />
+              <img src="/Screenshot_2.png" alt="Yavuz Selim Şengül" className="w-full h-full object-cover bg-background" onError={(e) => { e.target.src = 'https://ui-avatars.com/api/?name=Yavuz+Selim&background=random'; }} />
             </div>
             <h4 className="text-2xl font-black text-textMain mb-1">Yavuz Selim Şengül</h4>
             <p className="text-primary font-bold text-sm uppercase tracking-widest">Kurucu Ortak & CTO</p>
