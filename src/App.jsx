@@ -63,6 +63,7 @@ export default function HybridFundPlatform() {
     const sharePrice = project.sharePrice || 50;
     const [investAmount, setInvestAmount] = useState(1000);
     const [showDetails, setShowDetails] = useState(false);
+    const [isRecurring, setIsRecurring] = useState(false);
     
     const amount = isEquity ? (Number(lotAmount) * sharePrice) : (Number(investAmount) || 0);
     
@@ -222,6 +223,26 @@ export default function HybridFundPlatform() {
                       className="input font-mono text-2xl font-bold bg-surface text-[#10b981] border-[#10b981]/30 focus:border-[#10b981]"
                     />
                   </div>
+                  
+                  <div className="mt-6 pt-6 border-t border-borderBase">
+                    <label className="flex items-center cursor-pointer group">
+                      <div className="relative flex items-center justify-center w-6 h-6 mr-3">
+                        <input
+                          type="checkbox"
+                          className="sr-only"
+                          checked={isRecurring}
+                          onChange={(e) => setIsRecurring(e.target.checked)}
+                        />
+                        <div className={`w-6 h-6 rounded border transition-colors flex items-center justify-center ${isRecurring ? 'bg-[#10b981] border-[#10b981]' : 'bg-surface border-borderBase group-hover:border-[#10b981]/50'}`}>
+                          {isRecurring && <CheckCircle className="w-4 h-4 text-white" />}
+                        </div>
+                      </div>
+                      <div>
+                        <span className="block text-sm font-bold text-textMain">Her Ay Düzenli Bağış Yap</span>
+                        <span className="block text-xs text-textMuted mt-0.5">Kredi kartı ekstremden her ay bu tutar otomatik çekilsin.</span>
+                      </div>
+                    </label>
+                  </div>
                 </div>
               )}
             </div>
@@ -272,17 +293,21 @@ export default function HybridFundPlatform() {
               ) : (
                 <div className="bg-background rounded-2xl p-8 flex flex-col items-center justify-center border border-borderBase flex-1 relative overflow-hidden text-center min-h-[300px]">
                   <HeartHandshake className="w-24 h-24 text-[#10b981]/20 mb-6" />
-                  <h4 className="text-xl font-bold text-textMain mb-2">İyiliğe Ortak Olun</h4>
-                  <p className="text-textMuted text-sm leading-relaxed">Yapacağınız <strong>${amount.toLocaleString()}</strong> tutarındaki bağış, %100 şeffaflık ilkesiyle doğrudan ihtiyaç sahiplerine ulaştırılacaktır.</p>
+                  <h4 className="text-xl font-bold text-textMain mb-2">{isRecurring ? 'Düzenli İyilik Elçisi' : 'İyiliğe Ortak Olun'}</h4>
+                  <p className="text-textMuted text-sm leading-relaxed">
+                    {isRecurring 
+                      ? `Her ay düzenli olarak yapacağınız güçlü destek ($${amount.toLocaleString()}) ile iyiliği sürdürülebilir kılıyorsunuz.`
+                      : `Yapacağınız $${amount.toLocaleString()} tutarındaki bağış, %100 şeffaflık ilkesiyle doğrudan ihtiyaç sahiplerine ulaştırılacaktır.`}
+                  </p>
                 </div>
               )}
 
               <div className="mt-8">
                 <button 
                   className={`w-full text-lg py-4 ${isCharity ? 'bg-[#10b981] hover:bg-[#10b981]/90 text-white font-bold rounded-xl flex items-center justify-center transition-all' : 'btn-primary'}`}
-                  onClick={() => onProceedToPayment(project, amount)}
+                  onClick={() => onProceedToPayment(project, amount, isRecurring)}
                 >
-                  <HeartHandshake className="w-6 h-6 mr-2" /> {isCharity ? 'Bağışı Tamamla' : t('modal.confirm')}
+                  <HeartHandshake className="w-6 h-6 mr-2" /> {isCharity ? (isRecurring ? 'Düzenli Bağışı Başlat' : 'Bağışı Tamamla') : t('modal.confirm')}
                 </button>
               </div>
             </div>
@@ -484,13 +509,13 @@ export default function HybridFundPlatform() {
         </div>
       </div>
 
-      {/* Murabaha Tahsis Ekibi */}
+      {/* Yatırım Ekibi */}
       <div>
         <div className="mb-12 text-center">
           <span className="inline-flex items-center px-4 py-1.5 rounded-full text-sm font-bold bg-accent/10 text-accent mb-4 border border-accent/20">
             <ShieldCheck className="w-4 h-4 mr-2" /> Denetim
           </span>
-          <h3 className="text-3xl md:text-4xl font-black text-textMain">Murabaha Tahsis Ekibi</h3>
+          <h3 className="text-3xl md:text-4xl font-black text-textMain">Yatırım Ekibi</h3>
           <p className="text-textMuted max-w-2xl mx-auto mt-4 text-lg">Emtia ve ticaret bazlı yatırımların güvencesini sağlamak, tedarik süreçlerini denetlemek ve riskleri minimize etmekle görevli uzman ekibimiz.</p>
         </div>
         
@@ -1326,9 +1351,9 @@ export default function HybridFundPlatform() {
         <ProjectModal 
           project={activeProject} 
           onClose={() => setActiveProject(null)} 
-          onProceedToPayment={(proj, amount) => {
+          onProceedToPayment={(proj, amount, isRecurring) => {
             setActiveProject(null);
-            setPaymentData({ project: proj, amount: amount });
+            setPaymentData({ project: proj, amount: amount, isRecurring: isRecurring });
             setShowPaymentModal(true);
           }}
         />
@@ -1353,6 +1378,9 @@ const PaymentModal = ({ data, onClose }) => {
 
   const amount = Number(data.amount) || 0;
 
+  const [isMonthlyOrder, setIsMonthlyOrder] = useState(data.isRecurring || false);
+  const [monthlyAmount, setMonthlyAmount] = useState(amount);
+
   const rates = {
     usdt_trc20: { price: 1, symbol: 'USDT', address: 'TEkxiTehnzSm9LEzEGx...' },
     eth: { price: 3500, symbol: 'ETH', address: '0x71C7656EC7ab88b098...' },
@@ -1373,8 +1401,8 @@ const PaymentModal = ({ data, onClose }) => {
       <div className="bg-surface border border-borderBase rounded-[24px] w-full max-w-2xl shadow-2xl flex flex-col my-auto max-h-[90vh]">
         <div className="border-b border-borderBase px-8 py-6 flex justify-between items-center bg-surface/95 backdrop-blur rounded-t-[24px]">
           <div>
-            <h3 className="text-2xl font-black text-textMain">Yatırımı Tamamla</h3>
-            <span className="text-sm text-textMuted mt-1 block">{data.project.title} projesine fon sağlanıyor</span>
+            <h3 className="text-2xl font-black text-textMain">{data.isRecurring ? 'Düzenli Bağışı Tamamla' : (data.project.isCharity ? 'Bağışı Tamamla' : 'Yatırımı Tamamla')}</h3>
+            <span className="text-sm text-textMuted mt-1 block">{data.project.title} projesine {data.isRecurring ? 'her ay düzenli ' : ''}fon sağlanıyor</span>
           </div>
           <button onClick={onClose} className="p-2 bg-transparent border border-borderBase rounded-full hover:bg-background transition-colors text-textMain">
             <X className="w-6 h-6" />
@@ -1382,34 +1410,49 @@ const PaymentModal = ({ data, onClose }) => {
         </div>
 
         <div className="p-8 overflow-y-auto">
-          <div className="flex bg-background rounded-xl p-1 mb-8 border border-borderBase overflow-x-auto">
-            <button 
-              onClick={() => setTab('card')}
-              className={`flex-1 min-w-[120px] py-3 px-2 rounded-lg font-bold text-xs sm:text-sm transition-all flex items-center justify-center ${tab === 'card' ? 'bg-surface shadow-sm text-primary border border-borderBase' : 'text-textMuted hover:text-textMain'}`}
-            >
-              <CreditCard className="w-4 h-4 mr-2" /> Kredi Kartı
-            </button>
-            <button 
-              onClick={() => setTab('fiat')}
-              className={`flex-1 min-w-[120px] py-3 px-2 rounded-lg font-bold text-xs sm:text-sm transition-all flex items-center justify-center ${tab === 'fiat' ? 'bg-surface shadow-sm text-primary border border-borderBase' : 'text-textMuted hover:text-textMain'}`}
-            >
-              <Building2 className="w-4 h-4 mr-2" /> Havale/EFT
-            </button>
-            <button 
-              onClick={() => setTab('crypto')}
-              className={`flex-1 min-w-[120px] py-3 px-2 rounded-lg font-bold text-xs sm:text-sm transition-all flex items-center justify-center ${tab === 'crypto' ? 'bg-surface shadow-sm text-primary border border-borderBase' : 'text-textMuted hover:text-textMain'}`}
-            >
-              <Bitcoin className="w-4 h-4 mr-2" /> Kripto
-            </button>
-          </div>
+          {!data.isRecurring && (
+            <div className="flex bg-background rounded-xl p-1 mb-8 border border-borderBase overflow-x-auto">
+              <button 
+                onClick={() => setTab('card')}
+                className={`flex-1 min-w-[120px] py-3 px-2 rounded-lg font-bold text-xs sm:text-sm transition-all flex items-center justify-center ${tab === 'card' ? 'bg-surface shadow-sm text-primary border border-borderBase' : 'text-textMuted hover:text-textMain'}`}
+              >
+                <CreditCard className="w-4 h-4 mr-2" /> Kredi Kartı
+              </button>
+              <button 
+                onClick={() => setTab('fiat')}
+                className={`flex-1 min-w-[120px] py-3 px-2 rounded-lg font-bold text-xs sm:text-sm transition-all flex items-center justify-center ${tab === 'fiat' ? 'bg-surface shadow-sm text-primary border border-borderBase' : 'text-textMuted hover:text-textMain'}`}
+              >
+                <Building2 className="w-4 h-4 mr-2" /> Havale/EFT
+              </button>
+              <button 
+                onClick={() => setTab('crypto')}
+                className={`flex-1 min-w-[120px] py-3 px-2 rounded-lg font-bold text-xs sm:text-sm transition-all flex items-center justify-center ${tab === 'crypto' ? 'bg-surface shadow-sm text-primary border border-borderBase' : 'text-textMuted hover:text-textMain'}`}
+              >
+                <Bitcoin className="w-4 h-4 mr-2" /> Kripto
+              </button>
+            </div>
+          )}
 
           <div className="bg-background border border-borderBase rounded-2xl p-6 mb-8 text-center">
-            <span className="text-sm font-bold text-textMuted uppercase tracking-wider block mb-2">Ödenecek Toplam Tutar</span>
-            <span className="text-4xl font-black text-textMain font-mono">${amount.toLocaleString()}</span>
+            <span className="text-sm font-bold text-textMuted uppercase tracking-wider block mb-2">
+              {isMonthlyOrder ? 'Aylık Çekilecek Tutar' : 'Ödenecek Toplam Tutar'}
+            </span>
+            <span className="text-4xl font-black text-textMain font-mono">${isMonthlyOrder ? Number(monthlyAmount).toLocaleString() : amount.toLocaleString()}</span>
           </div>
 
           {tab === 'card' ? (
             <div className="animate-in fade-in slide-in-from-bottom-4 space-y-6">
+              {isMonthlyOrder && (
+                <div className="bg-[#10b981]/10 border border-[#10b981]/20 p-4 rounded-xl flex items-start">
+                  <HeartHandshake className="w-5 h-5 text-[#10b981] mr-3 mt-0.5 flex-shrink-0" />
+                  <div>
+                    <h5 className="text-sm font-bold text-[#10b981] mb-1">Düzenli Çekim Talimatı</h5>
+                    <p className="text-xs text-[#10b981]/80 leading-relaxed">
+                      Kredi kartınızdan her ayın bugünü ({new Date().getDate()}. gün) otomatik olarak tahsilat yapılacaktır. İşlemi onaylayarak tekrarlayan tahsilata izin vermiş olursunuz. Panelinizden istediğiniz zaman iptal edebilirsiniz.
+                    </p>
+                  </div>
+                </div>
+              )}
               <div className="bg-surface border border-borderBase rounded-2xl p-6">
                 <h4 className="font-bold text-textMain mb-6 flex items-center"><CreditCard className="w-5 h-5 mr-2 text-primary"/> Kart Bilgileri</h4>
                 <div className="space-y-4">
@@ -1433,8 +1476,27 @@ const PaymentModal = ({ data, onClose }) => {
                   </div>
                 </div>
               </div>
-              <button className="w-full btn-primary py-4 text-lg" onClick={() => { alert('Ödeme başarıyla alındı!'); onClose(); }}>
-                <CheckCircle className="w-5 h-5 mr-2" /> Güvenli Ödeme Yap (${amount.toLocaleString()})
+
+              {!data.isRecurring && (
+                <div className="bg-surface border border-borderBase rounded-2xl p-6">
+                  <label className="flex items-center cursor-pointer mb-2">
+                    <input type="checkbox" checked={isMonthlyOrder} onChange={(e) => setIsMonthlyOrder(e.target.checked)} className="mr-3 w-5 h-5 rounded border-borderBase text-primary focus:ring-primary" />
+                    <span className="font-bold text-textMain">Otomatik Çekim Emri Ver (Aylık)</span>
+                  </label>
+                  {isMonthlyOrder && (
+                    <div className="mt-4 animate-in fade-in slide-in-from-top-2">
+                      <label className="block text-xs font-bold text-textMuted uppercase tracking-wider mb-2">Aylık Çekilecek Tutar ($)</label>
+                      <input type="number" min="1" value={monthlyAmount} onChange={(e) => setMonthlyAmount(e.target.value)} className="input font-mono" placeholder="Aylık çekilecek miktar" />
+                      <p className="text-xs text-textMuted mt-2">
+                        Kredi kartınızdan her ayın bugünü ({new Date().getDate()}. gün) <strong>${Number(monthlyAmount).toLocaleString()}</strong> otomatik olarak çekilecektir.
+                      </p>
+                    </div>
+                  )}
+                </div>
+              )}
+
+              <button className="w-full btn-primary py-4 text-lg" onClick={() => { alert(isMonthlyOrder ? 'Düzenli ödeme talimatınız başarıyla alındı!' : 'Ödeme başarıyla alındı!'); onClose(); }}>
+                <CheckCircle className="w-5 h-5 mr-2" /> {isMonthlyOrder ? `Aylık Düzenli Ödeme Başlat ($${Number(monthlyAmount).toLocaleString()})` : `Güvenli Ödeme Yap ($${amount.toLocaleString()})`}
               </button>
             </div>
           ) : tab === 'fiat' ? (
