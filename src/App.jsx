@@ -58,17 +58,18 @@ export default function HybridFundPlatform() {
   const ProjectModal = ({ project, onClose, onProceedToPayment }) => {
     const isEquity = !!project.isEquity;
     const isCharity = !!project.isCharity;
-    
+    const isKarz = !!project.isKarz;
+
     const [lotAmount, setLotAmount] = useState(10);
     const sharePrice = project.sharePrice || 50;
     const [investAmount, setInvestAmount] = useState(1000);
     const [showDetails, setShowDetails] = useState(false);
     const [isRecurring, setIsRecurring] = useState(false);
-    
+
     const amount = isEquity ? (Number(lotAmount) * sharePrice) : (Number(investAmount) || 0);
-    
+
     // Sabit kazanç veya equity simülasyonu
-    const profit = isCharity ? 0 : (isEquity ? (amount * 1.5) : (amount * ((project.returnRate || 0) / 100))); 
+    const profit = isCharity || isKarz ? 0 : (isEquity ? (amount * 1.5) : (amount * ((project.returnRate || 0) / 100)));
     const total = amount + profit;
 
     const maxBarValue = Math.max(total, 1);
@@ -102,7 +103,7 @@ export default function HybridFundPlatform() {
             <div className="flex flex-col space-y-8">
               <div>
                 <p className="text-textMuted leading-relaxed font-medium mb-4">{project.desc}</p>
-                
+
                 {!showDetails ? (
                   <button onClick={() => setShowDetails(true)} className="text-primary font-bold text-sm flex items-center hover:underline">
                     {t('modal.readMore')} <ArrowUpRight className="w-4 h-4 ml-1" />
@@ -124,7 +125,7 @@ export default function HybridFundPlatform() {
                   </div>
                 )}
 
-                {!isCharity && (
+                {!isCharity && !isKarz && (
                   <div className="flex gap-4 mt-6">
                     <div className="bg-primary/10 px-4 py-3 rounded-xl border border-primary/20 flex-1">
                       <span className="text-xs text-primary font-bold uppercase block mb-1">
@@ -144,6 +145,14 @@ export default function HybridFundPlatform() {
                     </div>
                   </div>
                 )}
+
+                {isKarz && (
+                  <div className="bg-primary/10 px-4 py-3 rounded-xl border border-primary/20 mt-6">
+                     <span className="text-xs text-primary font-bold uppercase block mb-1">Yatırım Modeli</span>
+                     <span className="text-2xl font-black text-primary flex items-center"><HeartHandshake className="w-5 h-5 mr-2"/> Karz-ı Hasen (Sıfır Kazanç)</span>
+                     <span className="text-sm text-textMain mt-1 block">Yatırdığınız anapara, proje sonunda tarafınıza iade edilir. İyilik temelli finansmandır.</span>
+                  </div>
+                )}
               </div>
 
               {!isCharity && (
@@ -152,7 +161,7 @@ export default function HybridFundPlatform() {
                   <h4 className="font-bold text-textMain mb-6 flex items-center">
                     <Calculator className="w-5 h-5 mr-2 text-primary" /> {t('modal.simulator')}
                   </h4>
-                  
+
                   <div className="mb-5">
                     {isEquity ? (
                       <div className="flex gap-4">
@@ -195,7 +204,7 @@ export default function HybridFundPlatform() {
                     </div>
                     <div className="flex justify-between items-center pb-3 border-b border-borderBase">
                       <span className="text-sm font-semibold text-secondary">
-                        {isEquity ? 'Hedeflenen Çıkış Değeri (2.5x):' : `${t('modal.estProfit')} (+%${project.returnRate}):`}
+                        {isKarz ? 'Karz-ı Hasen Getirisi:' : (isEquity ? 'Hedeflenen Çıkış Değeri (2.5x):' : `${t('modal.estProfit')} (+%${project.returnRate}):`)}
                       </span>
                       <span className="font-mono font-bold text-secondary">+${profit.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span>
                     </div>
@@ -223,7 +232,7 @@ export default function HybridFundPlatform() {
                       className="input font-mono text-2xl font-bold bg-surface text-[#10b981] border-[#10b981]/30 focus:border-[#10b981]"
                     />
                   </div>
-                  
+
                   <div className="mt-6 pt-6 border-t border-borderBase">
                     <label className="flex items-center cursor-pointer group">
                       <div className="relative flex items-center justify-center w-6 h-6 mr-3">
@@ -257,30 +266,32 @@ export default function HybridFundPlatform() {
                       <span className="text-textMuted">Yatırım Tutarı</span>
                       <span className="text-textMain">${amount.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span>
                     </div>
-                    
+
                     {/* Horizontal Stacked Bar */}
                     <div className="w-full h-10 bg-surface rounded-lg flex overflow-hidden shadow-inner relative group cursor-crosshair">
                       {/* Principal Bar */}
-                      <div 
-                        className="bg-borderBase h-full flex items-center justify-center relative transition-all duration-700 ease-out border-r border-background/20" 
+                      <div
+                        className="bg-borderBase h-full flex items-center justify-center relative transition-all duration-700 ease-out border-r border-background/20"
                         style={{ width: `${(amount / (total || 1)) * 100}%` }}
                         title={`Ana Para: $${amount.toLocaleString(undefined, { minimumFractionDigits: 2 })}`}
                       >
                         <span className="text-[10px] font-bold text-textMuted group-hover:text-textMain transition-colors">ANA PARA</span>
                       </div>
-                      
+
                       {/* Profit Bar */}
-                      <div 
-                        className="bg-gradient-to-r from-[#10b981] to-[#34d399] h-full flex items-center justify-center relative transition-all duration-700 ease-out"
-                        style={{ width: `${(profit / (total || 1)) * 100}%` }}
-                        title={`Kâr: +$${profit.toLocaleString(undefined, { minimumFractionDigits: 2 })}`}
-                      >
-                         <span className="text-[10px] font-black text-background opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap px-1">+ KÂR</span>
-                      </div>
+                      {!isKarz && (
+                        <div
+                          className="bg-gradient-to-r from-[#10b981] to-[#34d399] h-full flex items-center justify-center relative transition-all duration-700 ease-out"
+                          style={{ width: `${(profit / (total || 1)) * 100}%` }}
+                          title={`Kâr: +$${profit.toLocaleString(undefined, { minimumFractionDigits: 2 })}`}
+                        >
+                          <span className="text-[10px] font-black text-background opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap px-1">+ KÂR</span>
+                        </div>
+                      )}
                     </div>
 
                     <div className="flex justify-between text-sm font-bold mt-4 pb-4 border-b border-borderBase/50">
-                      <span className="text-[#10b981]">{isEquity ? 'Tahmini Getiri (2.5x)' : `Tahmini Kazanç (+%${project.returnRate})`}</span>
+                      <span className="text-[#10b981]">{isKarz ? 'Karz-ı Hasen Kazancı' : (isEquity ? 'Tahmini Getiri (2.5x)' : `Tahmini Kazanç (+%${project.returnRate})`)}</span>
                       <span className="text-[#10b981]">+${profit.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span>
                     </div>
 
@@ -295,7 +306,7 @@ export default function HybridFundPlatform() {
                   <HeartHandshake className="w-24 h-24 text-[#10b981]/20 mb-6" />
                   <h4 className="text-xl font-bold text-textMain mb-2">{isRecurring ? 'Düzenli İyilik Elçisi' : 'İyiliğe Ortak Olun'}</h4>
                   <p className="text-textMuted text-sm leading-relaxed">
-                    {isRecurring 
+                    {isRecurring
                       ? `Her ay düzenli olarak yapacağınız güçlü destek ($${amount.toLocaleString()}) ile iyiliği sürdürülebilir kılıyorsunuz.`
                       : `Yapacağınız $${amount.toLocaleString()} tutarındaki bağış, %100 şeffaflık ilkesiyle doğrudan ihtiyaç sahiplerine ulaştırılacaktır.`}
                   </p>
@@ -303,11 +314,11 @@ export default function HybridFundPlatform() {
               )}
 
               <div className="mt-8">
-                <button 
+                <button
                   className={`w-full text-lg py-4 ${isCharity ? 'bg-[#10b981] hover:bg-[#10b981]/90 text-white font-bold rounded-xl flex items-center justify-center transition-all' : 'btn-primary'}`}
                   onClick={() => onProceedToPayment(project, amount, isRecurring)}
                 >
-                  <HeartHandshake className="w-6 h-6 mr-2" /> {isCharity ? (isRecurring ? 'Düzenli Bağışı Başlat' : 'Bağışı Tamamla') : t('modal.confirm')}
+                  <HeartHandshake className="w-6 h-6 mr-2" /> {isCharity ? (isRecurring ? 'Düzenli Bağışı Başlat' : 'Bağışı Tamamla') : (isKarz ? 'Karz-ı Hasen İşlemini Tamamla' : t('modal.confirm'))}
                 </button>
               </div>
             </div>
@@ -345,8 +356,8 @@ export default function HybridFundPlatform() {
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
                 className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 ${activeTab === tab.id
-                    ? 'bg-primary/10 text-primary shadow-sm border border-primary/20'
-                    : 'text-textMuted hover:text-primary hover:bg-surface'
+                  ? 'bg-primary/10 text-primary shadow-sm border border-primary/20'
+                  : 'text-textMuted hover:text-primary hover:bg-surface'
                   }`}
               >
                 {tab.label}
@@ -367,7 +378,7 @@ export default function HybridFundPlatform() {
                 <option value="ru" className="bg-surface text-textMain">RU</option>
               </select>
             </div>
-            
+
             {userProfile ? (
               <button onClick={() => setActiveTab('dashboard')} className={`flex items-center px-4 py-2 rounded-lg text-sm font-bold transition-all duration-200 ${activeTab === 'dashboard' ? 'bg-accent/10 text-accent border border-accent/30' : 'text-accent border border-accent/30 hover:bg-accent/10'}`}>
                 <LayoutDashboard className="w-4 h-4 mr-2" /> {t('nav.dashboard')}
@@ -393,7 +404,7 @@ export default function HybridFundPlatform() {
     <div className="animate-in fade-in duration-500">
       <div className="hero-bg relative overflow-hidden border-b border-borderBase">
         <div className="container py-[120px] lg:py-[160px] relative z-10 flex flex-col items-center text-center">
-          
+
           <div className="animate-on-scroll relative w-32 h-32 md:w-40 md:h-40 mb-8 flex items-center justify-center">
             <img src="/logo.png" alt="FundNova Logo" className="w-full h-full object-contain filter drop-shadow-[0_0_15px_rgba(56,189,248,0.4)]" />
           </div>
@@ -401,18 +412,18 @@ export default function HybridFundPlatform() {
           <span className="animate-on-scroll inline-flex items-center px-4 py-1.5 rounded-full text-sm font-bold bg-primary/10 text-primary mb-8 border border-primary/20 backdrop-blur-sm">
             <ShieldCheck className="w-4 h-4 mr-2" /> {t('common.compliance')}
           </span>
-          
+
           <h1 className="animate-on-scroll stagger-1 fluid-h1 font-black text-textMain tracking-tight mb-8 max-w-4xl">
             {t('home.title1')} <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
               {t('home.title2')}
             </span>
           </h1>
-          
+
           <p className="animate-on-scroll stagger-2 text-xl text-textMuted mb-12 max-w-2xl leading-relaxed">
             {t('home.desc')}
           </p>
-          
+
           <div className="animate-on-scroll stagger-3 flex flex-wrap justify-center gap-4">
             <button
               onClick={() => setActiveTab('debt')}
@@ -438,7 +449,7 @@ export default function HybridFundPlatform() {
             { label: t('stats.users'), value: '85.000+', icon: <Users /> },
             { label: t('stats.countries'), value: '12', icon: <Globe /> },
           ].map((stat, i) => (
-            <div key={i} className={`card animate-on-scroll stagger-${i+1} flex flex-col items-center text-center`}>
+            <div key={i} className={`card animate-on-scroll stagger-${i + 1} flex flex-col items-center text-center`}>
               <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-6 border border-primary/20">
                 {React.cloneElement(stat.icon, { className: 'w-7 h-7 text-primary' })}
               </div>
@@ -478,7 +489,7 @@ export default function HybridFundPlatform() {
           </span>
           <h3 className="text-3xl md:text-4xl font-black text-textMain">Yönetim Kurulu</h3>
         </div>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
           <div className="card text-center flex flex-col items-center hover:border-primary/50 transition-colors group">
             <div className="w-36 h-36 rounded-full overflow-hidden border-4 border-surface shadow-xl mb-6 relative">
@@ -488,7 +499,7 @@ export default function HybridFundPlatform() {
             <h4 className="text-2xl font-black text-textMain mb-1">Yusuf Gataullin</h4>
             <p className="text-primary font-bold text-sm uppercase tracking-widest">Kurucu Ortak & CEO</p>
           </div>
-          
+
           <div className="card text-center flex flex-col items-center hover:border-primary/50 transition-colors group">
             <div className="w-36 h-36 rounded-full overflow-hidden border-4 border-surface shadow-xl mb-6 relative">
               <div className="absolute inset-0 bg-primary/20 group-hover:bg-transparent transition-colors z-10"></div>
@@ -518,7 +529,7 @@ export default function HybridFundPlatform() {
           <h3 className="text-3xl md:text-4xl font-black text-textMain">Yatırım Ekibi</h3>
           <p className="text-textMuted max-w-2xl mx-auto mt-4 text-lg">Emtia ve ticaret bazlı yatırımların güvencesini sağlamak, tedarik süreçlerini denetlemek ve riskleri minimize etmekle görevli uzman ekibimiz.</p>
         </div>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
           <div className="card text-center flex flex-col items-center bg-surface hover:shadow-lg transition-all duration-300">
             <div className="w-24 h-24 rounded-full overflow-hidden border-2 border-accent/30 mb-4">
@@ -528,7 +539,7 @@ export default function HybridFundPlatform() {
             <p className="text-accent font-semibold text-xs uppercase tracking-wider mb-4">Tahsis Yöneticisi</p>
             <p className="text-sm text-textMuted leading-relaxed">Tedarikçi anlaşmaları ve fon onay süreçlerinin risk analizi ve uçtan uca takibi.</p>
           </div>
-          
+
           <div className="card text-center flex flex-col items-center bg-surface hover:shadow-lg transition-all duration-300">
             <div className="w-24 h-24 rounded-full overflow-hidden border-2 border-accent/30 mb-4">
               <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=256&h=256&fit=crop" alt="Operasyon Denetmeni" className="w-full h-full object-cover" />
@@ -557,20 +568,20 @@ export default function HybridFundPlatform() {
           </span>
           <h3 className="text-3xl md:text-4xl font-black text-textMain">Danışma Kurulu</h3>
         </div>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
           <div className="card border-t-4 border-[#10b981] bg-surface hover:-translate-y-1 transition-transform">
             <h4 className="text-xl font-bold text-textMain mb-2">Prof. Dr. İbrahim Halil</h4>
             <p className="text-[#10b981] font-bold text-xs uppercase tracking-wider mb-4">Fıkıh Kurulu Başkanı</p>
             <p className="text-sm text-textMuted leading-relaxed">İslami finans sözleşmelerinin şeriata uygunluk onayını sağlayan ve icazet belgelerini düzenleyen baş danışman.</p>
           </div>
-          
+
           <div className="card border-t-4 border-[#10b981] bg-surface hover:-translate-y-1 transition-transform">
             <h4 className="text-xl font-bold text-textMain mb-2">Dr. Mustafa Kaya</h4>
             <p className="text-[#10b981] font-bold text-xs uppercase tracking-wider mb-4">Şer'i Risk Uzmanı</p>
             <p className="text-sm text-textMuted leading-relaxed">Finansal modellemelerin fıkhi sürdürülebilirliğini ve dönemsel denetimlerini yönetir.</p>
           </div>
-          
+
           <div className="card border-t-4 border-[#10b981] bg-surface hover:-translate-y-1 transition-transform">
             <h4 className="text-xl font-bold text-textMain mb-2">Ali Rıza Can</h4>
             <p className="text-[#10b981] font-bold text-xs uppercase tracking-wider mb-4">Bağımsız Denetçi</p>
@@ -590,7 +601,7 @@ export default function HybridFundPlatform() {
             Platformumuz, uluslararası geçerliliğe sahip bağımsız denetim kuruluşları ve bankalar tarafından onaylanmış sertifikalara sahiptir.
           </p>
         </div>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {/* IsDB Onayı */}
           <div className="card border border-borderBase bg-surface flex items-start p-8 hover:border-primary/50 transition-colors group">
@@ -604,7 +615,7 @@ export default function HybridFundPlatform() {
               </p>
             </div>
           </div>
-          
+
           {/* AAOIFI Onayı */}
           <div className="card border border-borderBase bg-surface flex items-start p-8 hover:border-[#10b981]/50 transition-colors group">
             <div className="w-16 h-16 rounded-full bg-surface flex items-center justify-center flex-shrink-0 mr-6 group-hover:scale-110 transition-transform border border-borderBase overflow-hidden shadow-sm">
@@ -633,7 +644,7 @@ export default function HybridFundPlatform() {
       if (role === 'corp') profile = 'corp';
       else if (role === 'ngo') profile = 'ngo';
       else if (answers.q3 === 'a3_2') profile = 'macro';
-      
+
       setUserProfile(profile);
       setActiveTab('dashboard');
     };
@@ -642,7 +653,7 @@ export default function HybridFundPlatform() {
       <div className="container py-16 animate-in fade-in duration-500">
         <div className="max-w-xl mx-auto card relative overflow-hidden">
           <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-accent"></div>
-          
+
           {step === 1 && (
             <div>
               <h2 className="fluid-h2 font-black text-textMain mb-10 text-center">{t('registerFlow.step1')}</h2>
@@ -668,7 +679,7 @@ export default function HybridFundPlatform() {
 
           {step === 2 && (
             <div className="animate-in slide-in-from-right-4">
-              <button onClick={() => setStep(1)} className="text-textMuted hover:text-primary flex items-center mb-6 text-sm font-bold"><ChevronLeft className="w-4 h-4 mr-1"/> {t('registerFlow.back')}</button>
+              <button onClick={() => setStep(1)} className="text-textMuted hover:text-primary flex items-center mb-6 text-sm font-bold"><ChevronLeft className="w-4 h-4 mr-1" /> {t('registerFlow.back')}</button>
               <h2 className="text-2xl font-black text-textMain mb-8">{t('registerFlow.step2')}</h2>
               <div className="space-y-6">
                 <div>
@@ -692,38 +703,38 @@ export default function HybridFundPlatform() {
 
           {step === 3 && role === 'indiv' && (
             <div className="animate-in slide-in-from-right-4">
-              <button onClick={() => setStep(2)} className="text-textMuted hover:text-primary flex items-center mb-6 text-sm font-bold"><ChevronLeft className="w-4 h-4 mr-1"/> {t('registerFlow.back')}</button>
+              <button onClick={() => setStep(2)} className="text-textMuted hover:text-primary flex items-center mb-6 text-sm font-bold"><ChevronLeft className="w-4 h-4 mr-1" /> {t('registerFlow.back')}</button>
               <h2 className="text-2xl font-black text-textMain mb-8 flex items-center"><AlertTriangle className="w-6 h-6 text-[#f59e0b] mr-3" /> {t('registerFlow.step3')}</h2>
-              
+
               <div className="space-y-8">
                 <div>
                   <h4 className="text-textMain font-bold mb-4">{t('registerFlow.q1')}</h4>
                   <div className="flex gap-4">
-                    <button onClick={()=>setAnswers({...answers, q1:'a1_1'})} className={`flex-1 py-3 px-4 rounded-xl border font-bold text-sm transition-colors ${answers.q1==='a1_1' ? 'bg-primary/10 border-primary text-primary' : 'bg-background border-borderBase text-textMuted'}`}>{t('registerFlow.a1_1')}</button>
-                    <button onClick={()=>setAnswers({...answers, q1:'a1_2'})} className={`flex-1 py-3 px-4 rounded-xl border font-bold text-sm transition-colors ${answers.q1==='a1_2' ? 'bg-primary/10 border-primary text-primary' : 'bg-background border-borderBase text-textMuted'}`}>{t('registerFlow.a1_2')}</button>
+                    <button onClick={() => setAnswers({ ...answers, q1: 'a1_1' })} className={`flex-1 py-3 px-4 rounded-xl border font-bold text-sm transition-colors ${answers.q1 === 'a1_1' ? 'bg-primary/10 border-primary text-primary' : 'bg-background border-borderBase text-textMuted'}`}>{t('registerFlow.a1_1')}</button>
+                    <button onClick={() => setAnswers({ ...answers, q1: 'a1_2' })} className={`flex-1 py-3 px-4 rounded-xl border font-bold text-sm transition-colors ${answers.q1 === 'a1_2' ? 'bg-primary/10 border-primary text-primary' : 'bg-background border-borderBase text-textMuted'}`}>{t('registerFlow.a1_2')}</button>
                   </div>
                 </div>
-                
+
                 <div>
                   <h4 className="text-textMain font-bold mb-4">{t('registerFlow.q2')}</h4>
                   <div className="flex flex-col gap-3">
-                    <button onClick={()=>setAnswers({...answers, q2:'a2_1'})} className={`py-3 px-4 rounded-xl border font-bold text-sm text-left transition-colors ${answers.q2==='a2_1' ? 'bg-primary/10 border-primary text-primary' : 'bg-background border-borderBase text-textMuted'}`}>{t('registerFlow.a2_1')}</button>
-                    <button onClick={()=>setAnswers({...answers, q2:'a2_2'})} className={`py-3 px-4 rounded-xl border font-bold text-sm text-left transition-colors ${answers.q2==='a2_2' ? 'bg-primary/10 border-primary text-primary' : 'bg-background border-borderBase text-textMuted'}`}>{t('registerFlow.a2_2')}</button>
-                    <button onClick={()=>setAnswers({...answers, q2:'a2_3'})} className={`py-3 px-4 rounded-xl border font-bold text-sm text-left transition-colors ${answers.q2==='a2_3' ? 'bg-primary/10 border-primary text-primary' : 'bg-background border-borderBase text-textMuted'}`}>{t('registerFlow.a2_3')}</button>
+                    <button onClick={() => setAnswers({ ...answers, q2: 'a2_1' })} className={`py-3 px-4 rounded-xl border font-bold text-sm text-left transition-colors ${answers.q2 === 'a2_1' ? 'bg-primary/10 border-primary text-primary' : 'bg-background border-borderBase text-textMuted'}`}>{t('registerFlow.a2_1')}</button>
+                    <button onClick={() => setAnswers({ ...answers, q2: 'a2_2' })} className={`py-3 px-4 rounded-xl border font-bold text-sm text-left transition-colors ${answers.q2 === 'a2_2' ? 'bg-primary/10 border-primary text-primary' : 'bg-background border-borderBase text-textMuted'}`}>{t('registerFlow.a2_2')}</button>
+                    <button onClick={() => setAnswers({ ...answers, q2: 'a2_3' })} className={`py-3 px-4 rounded-xl border font-bold text-sm text-left transition-colors ${answers.q2 === 'a2_3' ? 'bg-primary/10 border-primary text-primary' : 'bg-background border-borderBase text-textMuted'}`}>{t('registerFlow.a2_3')}</button>
                   </div>
                 </div>
 
                 <div>
                   <h4 className="text-textMain font-bold mb-4">{t('registerFlow.q3')}</h4>
                   <div className="flex gap-4">
-                    <button onClick={()=>setAnswers({...answers, q3:'a3_1'})} className={`flex-1 py-3 px-4 rounded-xl border font-bold text-sm transition-colors ${answers.q3==='a3_1' ? 'bg-primary/10 border-primary text-primary' : 'bg-background border-borderBase text-textMuted'}`}>{t('registerFlow.a3_1')}</button>
-                    <button onClick={()=>setAnswers({...answers, q3:'a3_2'})} className={`flex-1 py-3 px-4 rounded-xl border font-bold text-sm transition-colors ${answers.q3==='a3_2' ? 'bg-primary/10 border-primary text-primary' : 'bg-background border-borderBase text-textMuted'}`}>{t('registerFlow.a3_2')}</button>
+                    <button onClick={() => setAnswers({ ...answers, q3: 'a3_1' })} className={`flex-1 py-3 px-4 rounded-xl border font-bold text-sm transition-colors ${answers.q3 === 'a3_1' ? 'bg-primary/10 border-primary text-primary' : 'bg-background border-borderBase text-textMuted'}`}>{t('registerFlow.a3_1')}</button>
+                    <button onClick={() => setAnswers({ ...answers, q3: 'a3_2' })} className={`flex-1 py-3 px-4 rounded-xl border font-bold text-sm transition-colors ${answers.q3 === 'a3_2' ? 'bg-primary/10 border-primary text-primary' : 'bg-background border-borderBase text-textMuted'}`}>{t('registerFlow.a3_2')}</button>
                   </div>
                 </div>
 
-                <button 
+                <button
                   disabled={!answers.q1 || !answers.q2 || !answers.q3}
-                  onClick={handleFinish} 
+                  onClick={handleFinish}
                   className="w-full btn-primary text-lg mt-8 py-4 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {t('registerFlow.finish')}
@@ -742,7 +753,7 @@ export default function HybridFundPlatform() {
     if (!userProfile) return null;
 
     let badgeText, title, AccentIcon, isCorpOrNgo;
-    
+
     if (userProfile === 'micro') {
       badgeText = t('dashboard.microBadge'); title = t('dashboard.titleIndiv'); AccentIcon = User; isCorpOrNgo = false;
     } else if (userProfile === 'macro') {
@@ -780,13 +791,13 @@ export default function HybridFundPlatform() {
                 <div className="card border-l-4 border-l-[#10b981] bg-surface">
                   <h4 className="font-bold text-textMain text-lg mb-2">Gazze Acil Gıda Kampanyası</h4>
                   <p className="text-textMuted text-sm mb-4">Risk: Çok Düşük | Minimum: $10</p>
-                  <button onClick={()=>setActiveTab('charity')} className="w-full btn-ghost text-sm py-2 text-[#10b981] border-[#10b981]">İncele</button>
+                  <button onClick={() => setActiveTab('charity')} className="w-full btn-ghost text-sm py-2 text-[#10b981] border-[#10b981]">İncele</button>
                 </div>
               ) : (
                 <div className="card border-l-4 border-l-accent bg-surface">
                   <h4 className="font-bold text-textMain text-lg mb-2">GazaTech Mobil Sağlık</h4>
                   <p className="text-textMuted text-sm mb-4">Risk: C (Tohum) | Beklenen Getiri: %35</p>
-                  <button onClick={()=>setActiveTab('equity')} className="w-full btn-ghost text-sm py-2 text-accent border-accent">İncele</button>
+                  <button onClick={() => setActiveTab('equity')} className="w-full btn-ghost text-sm py-2 text-accent border-accent">İncele</button>
                 </div>
               )}
             </div>
@@ -809,9 +820,9 @@ export default function HybridFundPlatform() {
                   <BarChart3 className="w-5 h-5 mr-3 text-primary" /> {t('dashboard.marketing')}
                 </h3>
                 <ul className="space-y-4">
-                  <li className="flex items-center text-textMain font-medium p-3 hover:bg-background rounded-lg transition-colors cursor-pointer border border-transparent hover:border-borderBase"><TrendingUp className="w-4 h-4 text-primary mr-3"/> SEO & Ads Yönetimi</li>
-                  <li className="flex items-center text-textMain font-medium p-3 hover:bg-background rounded-lg transition-colors cursor-pointer border border-transparent hover:border-borderBase"><Users className="w-4 h-4 text-primary mr-3"/> Yatırımcı E-posta Bülteni</li>
-                  <li className="flex items-center text-textMain font-medium p-3 hover:bg-background rounded-lg transition-colors cursor-pointer border border-transparent hover:border-borderBase"><Activity className="w-4 h-4 text-primary mr-3"/> {t('dashboard.analytics')}</li>
+                  <li className="flex items-center text-textMain font-medium p-3 hover:bg-background rounded-lg transition-colors cursor-pointer border border-transparent hover:border-borderBase"><TrendingUp className="w-4 h-4 text-primary mr-3" /> SEO & Ads Yönetimi</li>
+                  <li className="flex items-center text-textMain font-medium p-3 hover:bg-background rounded-lg transition-colors cursor-pointer border border-transparent hover:border-borderBase"><Users className="w-4 h-4 text-primary mr-3" /> Yatırımcı E-posta Bülteni</li>
+                  <li className="flex items-center text-textMain font-medium p-3 hover:bg-background rounded-lg transition-colors cursor-pointer border border-transparent hover:border-borderBase"><Activity className="w-4 h-4 text-primary mr-3" /> {t('dashboard.analytics')}</li>
                 </ul>
               </div>
             </div>
@@ -837,7 +848,7 @@ export default function HybridFundPlatform() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
           {projects.map((p, i) => (
-            <div key={p.id} className={`card p-0 overflow-hidden flex flex-col animate-on-scroll stagger-${(i%4)+1} group`}>
+            <div key={p.id} className={`card p-0 overflow-hidden flex flex-col animate-on-scroll stagger-${(i % 4) + 1} group`}>
               <div className="relative h-64 overflow-hidden">
                 <div className="absolute inset-0 bg-background/20 group-hover:bg-transparent transition-colors z-10"></div>
                 <img src={p.image} alt={p.title} className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-700" />
@@ -858,9 +869,14 @@ export default function HybridFundPlatform() {
                     <div className="bg-primary h-full rounded-full shadow-[0_0_10px_rgba(56,189,248,0.5)]" style={{ width: `${(p.raised / p.target) * 100}%` }} />
                   </div>
                 </div>
-                <button onClick={() => setActiveProject(p)} className="w-full btn-ghost">
-                  {t('common.invest')}
-                </button>
+                <div className="flex gap-2">
+                  <button onClick={() => setActiveProject({ ...p, isKarz: false })} className="flex-1 btn-ghost">
+                    {t('common.invest')}
+                  </button>
+                  <button onClick={() => setActiveProject({ ...p, isKarz: true })} className="flex-1 btn-ghost border-primary text-primary hover:bg-primary/10">
+                    Karz-ı Hasen Yap
+                  </button>
+                </div>
               </div>
             </div>
           ))}
@@ -884,7 +900,7 @@ export default function HybridFundPlatform() {
         </div>
         <div className="max-w-5xl mx-auto flex flex-col gap-8">
           {projects.map((project, i) => (
-            <div key={project.id} className={`card p-0 overflow-hidden flex flex-col md:flex-row group animate-on-scroll stagger-${(i%3)+1}`}>
+            <div key={project.id} className={`card p-0 overflow-hidden flex flex-col md:flex-row group animate-on-scroll stagger-${(i % 3) + 1}`}>
               <div className="md:w-5/12 relative h-72 md:h-auto overflow-hidden">
                 <div className="absolute inset-0 bg-background/20 group-hover:bg-transparent transition-colors z-10"></div>
                 <img src={project.image} alt={project.title} className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-700" />
@@ -896,7 +912,7 @@ export default function HybridFundPlatform() {
                 <span className="text-xs font-bold uppercase tracking-widest text-primary mb-2 block">{project.company}</span>
                 <h3 className="fluid-h3 font-black text-textMain mb-4 leading-tight">{project.title}</h3>
                 <p className="text-textMuted text-base mb-6 leading-relaxed">{project.desc}</p>
-                
+
                 {/* Illustrative Graphic (Mini Chart) */}
                 <div className="mb-8 bg-background rounded-xl border border-borderBase p-4 flex items-center gap-4">
                   <div className="flex-1">
@@ -927,9 +943,14 @@ export default function HybridFundPlatform() {
                     <div className="bg-accent h-full rounded-full shadow-[0_0_10px_rgba(244,114,182,0.5)]" style={{ width: `${(project.raised / project.target) * 100}%` }} />
                   </div>
                 </div>
-                <button onClick={() => setActiveProject(project)} className="w-full btn-primary">
-                  {t('common.invest')}
-                </button>
+                <div className="flex gap-2">
+                  <button onClick={() => setActiveProject({ ...project, isKarz: false })} className="flex-1 btn-primary">
+                    {t('common.invest')}
+                  </button>
+                  <button onClick={() => setActiveProject({ ...project, isKarz: true })} className="flex-1 btn-ghost border-primary text-primary hover:bg-primary/10">
+                    Karz-ı Hasen Yap
+                  </button>
+                </div>
               </div>
             </div>
           ))}
@@ -979,7 +1000,7 @@ export default function HybridFundPlatform() {
             </button>
           </div>
         </div>
-        
+
         <div className="card p-0 overflow-hidden flex flex-col group animate-on-scroll stagger-3">
           <div className="relative h-64 overflow-hidden">
             <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=1453" alt="Hastane Onarımı" className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-700" />
@@ -1188,11 +1209,11 @@ export default function HybridFundPlatform() {
             <h3 className="text-2xl font-bold text-textMain mb-8 flex items-center">
               <ArrowRightLeft className="w-6 h-6 text-primary mr-3" /> Emir Paneli
             </h3>
-            
+
             <div className="space-y-6">
               <div>
                 <label className="block text-xs font-bold text-textMuted uppercase tracking-wider mb-2">Varlık Seçimi</label>
-                <select 
+                <select
                   className="input font-bold"
                   value={exchangeAssetId}
                   onChange={(e) => setExchangeAssetId(e.target.value)}
@@ -1205,10 +1226,10 @@ export default function HybridFundPlatform() {
 
               <div>
                 <label className="block text-xs font-bold text-textMuted uppercase tracking-wider mb-2">{t('common.amount')} (Lot)</label>
-                <input 
-                  type="number" 
-                  min="1" 
-                  value={exchangeLotAmount} 
+                <input
+                  type="number"
+                  min="1"
+                  value={exchangeLotAmount}
                   onChange={(e) => setExchangeLotAmount(Math.max(1, parseInt(e.target.value) || 1))}
                   className="input font-mono font-bold"
                 />
@@ -1237,7 +1258,7 @@ export default function HybridFundPlatform() {
                 <h3 className="text-xl font-bold text-textMain mb-6 flex items-center px-2">
                   <TrendingUp className="w-5 h-5 text-primary mr-2" /> {t('exchangeTab.chart')} - {currentAsset.name}
                 </h3>
-                
+
                 <div className="relative h-64 border-b border-borderBase flex items-end gap-[6px] overflow-hidden px-4 pl-12 pb-4">
                   {/* Y Eksen Grid ve Etiketler */}
                   <div className="absolute left-0 inset-y-0 w-10 border-r border-borderBase flex flex-col justify-between py-4 text-[10px] text-textMuted font-mono">
@@ -1251,21 +1272,21 @@ export default function HybridFundPlatform() {
                   <div className="absolute inset-0 pl-12 flex flex-col justify-between pointer-events-none opacity-5 py-4">
                     {[...Array(4)].map((_, i) => <div key={i} className="w-full border-b border-white border-dashed"></div>)}
                   </div>
-                  
+
                   {/* Mumlar */}
                   {candleData.map((candle, i) => {
                     const isUp = candle.close >= candle.open;
                     const bTop = Math.max(candle.open, candle.close);
                     const bBot = Math.min(candle.open, candle.close);
                     const maxY = 250;
-                    
+
                     return (
                       <div key={i} className="relative flex-1 flex justify-center group h-full items-end">
-                        <div 
+                        <div
                           className={`absolute w-[2px] rounded-full ${isUp ? 'bg-[#10b981]' : 'bg-[#ef4444]'}`}
                           style={{ bottom: `${(candle.low / maxY) * 100}%`, height: `${((candle.high - candle.low) / maxY) * 100}%` }}
                         ></div>
-                        <div 
+                        <div
                           className={`absolute w-full max-w-[14px] z-10 rounded-[2px] shadow-sm transition-all duration-300 group-hover:scale-110 group-hover:z-20 cursor-crosshair min-h-[2px]
                           ${isUp ? 'bg-[#10b981] shadow-[0_0_12px_rgba(16,185,129,0.4)]' : 'bg-[#ef4444] shadow-[0_0_12px_rgba(239,68,68,0.4)]'}`}
                           style={{ bottom: `${(bBot / maxY) * 100}%`, height: `${((bTop - bBot) / maxY) * 100}%` }}
@@ -1280,7 +1301,7 @@ export default function HybridFundPlatform() {
                 <ShieldCheck className="w-16 h-16 text-primary mb-6" />
                 <h3 className="text-2xl font-bold text-textMain mb-3">{currentAsset.name}</h3>
                 <p className="text-textMuted max-w-md leading-relaxed">
-                  Borca dayalı (Sukuk / Murabaha) enstrümanlarda fiyat sabittir ve ikincil piyasada dalgalanma göstermez. 
+                  Borca dayalı (Sukuk / Murabaha) enstrümanlarda fiyat sabittir ve ikincil piyasada dalgalanma göstermez.
                   Bu nedenle varlığa ait fiyat grafiği bulunmamaktadır.
                 </p>
               </div>
@@ -1348,9 +1369,9 @@ export default function HybridFundPlatform() {
       </main>
 
       {activeProject && (
-        <ProjectModal 
-          project={activeProject} 
-          onClose={() => setActiveProject(null)} 
+        <ProjectModal
+          project={activeProject}
+          onClose={() => setActiveProject(null)}
           onProceedToPayment={(proj, amount, isRecurring) => {
             setActiveProject(null);
             setPaymentData({ project: proj, amount: amount, isRecurring: isRecurring });
@@ -1360,9 +1381,9 @@ export default function HybridFundPlatform() {
       )}
 
       {showPaymentModal && paymentData && (
-        <PaymentModal 
-          data={paymentData} 
-          onClose={() => setShowPaymentModal(false)} 
+        <PaymentModal
+          data={paymentData}
+          onClose={() => setShowPaymentModal(false)}
         />
       )}
     </div>
@@ -1412,19 +1433,19 @@ const PaymentModal = ({ data, onClose }) => {
         <div className="p-8 overflow-y-auto">
           {!data.isRecurring && (
             <div className="flex bg-background rounded-xl p-1 mb-8 border border-borderBase overflow-x-auto">
-              <button 
+              <button
                 onClick={() => setTab('card')}
                 className={`flex-1 min-w-[120px] py-3 px-2 rounded-lg font-bold text-xs sm:text-sm transition-all flex items-center justify-center ${tab === 'card' ? 'bg-surface shadow-sm text-primary border border-borderBase' : 'text-textMuted hover:text-textMain'}`}
               >
                 <CreditCard className="w-4 h-4 mr-2" /> Kredi Kartı
               </button>
-              <button 
+              <button
                 onClick={() => setTab('fiat')}
                 className={`flex-1 min-w-[120px] py-3 px-2 rounded-lg font-bold text-xs sm:text-sm transition-all flex items-center justify-center ${tab === 'fiat' ? 'bg-surface shadow-sm text-primary border border-borderBase' : 'text-textMuted hover:text-textMain'}`}
               >
                 <Building2 className="w-4 h-4 mr-2" /> Havale/EFT
               </button>
-              <button 
+              <button
                 onClick={() => setTab('crypto')}
                 className={`flex-1 min-w-[120px] py-3 px-2 rounded-lg font-bold text-xs sm:text-sm transition-all flex items-center justify-center ${tab === 'crypto' ? 'bg-surface shadow-sm text-primary border border-borderBase' : 'text-textMuted hover:text-textMain'}`}
               >
@@ -1454,7 +1475,7 @@ const PaymentModal = ({ data, onClose }) => {
                 </div>
               )}
               <div className="bg-surface border border-borderBase rounded-2xl p-6">
-                <h4 className="font-bold text-textMain mb-6 flex items-center"><CreditCard className="w-5 h-5 mr-2 text-primary"/> Kart Bilgileri</h4>
+                <h4 className="font-bold text-textMain mb-6 flex items-center"><CreditCard className="w-5 h-5 mr-2 text-primary" /> Kart Bilgileri</h4>
                 <div className="space-y-4">
                   <div>
                     <label className="block text-xs font-bold text-textMuted uppercase tracking-wider mb-2">Kart Numarası</label>
@@ -1549,7 +1570,7 @@ const PaymentModal = ({ data, onClose }) => {
                 <div className="w-40 h-40 bg-white p-2 rounded-xl mb-6 shadow-md flex items-center justify-center">
                   <QrCode className="w-32 h-32 text-black" />
                 </div>
-                
+
                 <span className="text-xs font-bold text-textMuted uppercase tracking-wider mb-1">Gönderilecek Tutar</span>
                 <span className="text-2xl font-black text-textMain font-mono mb-6">{cryptoAmount} {selectedCrypto.symbol}</span>
 
