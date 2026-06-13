@@ -1058,10 +1058,10 @@ export default function HybridFundPlatform() {
             </div>
           </div>
           <div className="p-8 flex-1 flex flex-col bg-surface">
-            <span className="text-xs font-bold uppercase tracking-widest text-textMuted mb-2 block">Yeryüzü Doktorları</span>
-            <h3 className="text-2xl font-black text-textMain leading-tight mb-4">Gazze Şifa Hastanesi Yeniden İnşası</h3>
-            <p className="text-textMuted mb-8 flex-1 leading-relaxed">Tahrip olan Şifa hastanesinin acil servis ve ameliyathane bölümlerinin onarılması ve tıbbi cihaz tedariği.</p>
-            <button onClick={() => setActiveProject({ id: 'c3', company: 'Yeryüzü Doktorları', title: 'Gazze Şifa Hastanesi Yeniden İnşası', desc: 'Tahrip olan Şifa hastanesinin acil servis ve ameliyathane bölümlerinin onarılması ve tıbbi cihaz tedariği.', isCharity: true })} className="w-full btn-ghost border-[#38bdf8] text-[#38bdf8] hover:bg-[#38bdf8]/10 mt-auto">
+            <span className="text-xs font-bold uppercase tracking-widest text-textMuted mb-2 block">Filistin Bağımsız Sağlıkçılar Derneği</span>
+            <h3 className="text-2xl font-black text-textMain leading-tight mb-4">Konteyner Poliklinik Ağı</h3>
+            <p className="text-textMuted mb-8 flex-1 leading-relaxed">Sağlık altyapısı çökmüş bölgelerde, acil müdahale ve birinci basamak sağlık hizmeti verecek mobil konteyner kliniklerin faaliyete geçirilmesi.</p>
+            <button onClick={() => setActiveProject({ id: 'c3', company: 'Filistin Bağımsız Sağlıkçılar Derneği', title: 'Konteyner Poliklinik Ağı', desc: 'Sağlık altyapısı çökmüş bölgelerde, acil müdahale ve birinci basamak sağlık hizmeti verecek mobil konteyner kliniklerin faaliyete geçirilmesi.', isCharity: true })} className="w-full btn-ghost border-[#38bdf8] text-[#38bdf8] hover:bg-[#38bdf8]/10 mt-auto">
               <HeartHandshake className="w-5 h-5 mr-2" /> {t('common.donate')}
             </button>
           </div>
@@ -1075,10 +1075,10 @@ export default function HybridFundPlatform() {
             </div>
           </div>
           <div className="p-8 flex-1 flex flex-col bg-surface">
-            <span className="text-xs font-bold uppercase tracking-widest text-textMuted mb-2 block">Kızılay</span>
-            <h3 className="text-2xl font-black text-textMain leading-tight mb-4">Gazze Çadır Kent Okulları</h3>
-            <p className="text-textMuted mb-8 flex-1 leading-relaxed">Eğitimden mahrum kalan Gazzeli çocuklar için tam teşekküllü 10 adet büyük eğitim çadırı kurulumu.</p>
-            <button onClick={() => setActiveProject({ id: 'c4', company: 'Kızılay', title: 'Gazze Çadır Kent Okulları', desc: 'Eğitimden mahrum kalan Gazzeli çocuklar için tam teşekküllü 10 adet büyük eğitim çadırı kurulumu.', isCharity: true })} className="w-full btn-ghost border-[#a855f7] text-[#a855f7] hover:bg-[#a855f7]/10 mt-auto">
+            <span className="text-xs font-bold uppercase tracking-widest text-textMuted mb-2 block">Gazze Yetim Dayanışma Vakfı</span>
+            <h3 className="text-2xl font-black text-textMain leading-tight mb-4">Çocuklar İçin Psikososyal Destek Merkezi</h3>
+            <p className="text-textMuted mb-8 flex-1 leading-relaxed">Savaş mağduru yetim çocuklara uzun vadeli travma sonrası psikolojik rehabilitasyon ve sanat terapisi sağlanması.</p>
+            <button onClick={() => setActiveProject({ id: 'c4', company: 'Gazze Yetim Dayanışma Vakfı', title: 'Çocuklar İçin Psikososyal Destek Merkezi', desc: 'Savaş mağduru yetim çocuklara uzun vadeli travma sonrası psikolojik rehabilitasyon ve sanat terapisi sağlanması.', isCharity: true })} className="w-full btn-ghost border-[#a855f7] text-[#a855f7] hover:bg-[#a855f7]/10 mt-auto">
               <HeartHandshake className="w-5 h-5 mr-2" /> {t('common.donate')}
             </button>
           </div>
