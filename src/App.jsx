@@ -790,7 +790,8 @@ export default function HybridFundPlatform() {
               </div>
             </div>
           )}
-
+          </>
+          )}
         </div>
       </div>
     );
