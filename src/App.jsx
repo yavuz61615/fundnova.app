@@ -838,7 +838,7 @@ export default function HybridFundPlatform() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {userProfile === 'micro' ? (
                 <div className="card border-l-4 border-l-[#10b981] bg-surface">
-                  <h4 className="font-bold text-textMain text-lg mb-2">Gazze Acil Gıda Kampanyası</h4>
+                  <h4 className="font-bold text-textMain text-lg mb-2">Filistin Çocukları Eğitim Çadırları</h4>
                   <p className="text-textMuted text-sm mb-4">Risk: Çok Düşük | Minimum: $10</p>
                   <button onClick={() => setActiveTab('charity')} className="w-full btn-ghost text-sm py-2 text-[#10b981] border-[#10b981]">İncele</button>
                 </div>
@@ -1024,10 +1024,10 @@ export default function HybridFundPlatform() {
             </div>
           </div>
           <div className="p-8 flex-1 flex flex-col bg-surface">
-            <span className="text-xs font-bold uppercase tracking-widest text-textMuted mb-2 block">İHH İnsani Yardım Vakfı</span>
-            <h3 className="text-2xl font-black text-textMain leading-tight mb-4">Afrika Su Kuyusu Projesi</h3>
-            <p className="text-textMuted mb-8 flex-1 leading-relaxed">Kuraklık yaşanan 3 farklı köyde sürdürülebilir ve güneş enerjisi ile çalışan derin su kuyusu inşası.</p>
-            <button onClick={() => setActiveProject({ id: 'c1', company: 'İHH İnsani Yardım Vakfı', title: 'Afrika Su Kuyusu Projesi', desc: 'Kuraklık yaşanan 3 farklı köyde sürdürülebilir ve güneş enerjisi ile çalışan derin su kuyusu inşası.', isCharity: true })} className="w-full btn-ghost border-[#10b981] text-[#10b981] hover:bg-[#10b981]/10 mt-auto">
+            <span className="text-xs font-bold uppercase tracking-widest text-textMuted mb-2 block">Gazze Umut Güneşi Derneği</span>
+            <h3 className="text-2xl font-black text-textMain leading-tight mb-4">Gazze Temiz Su Arıtma Projesi</h3>
+            <p className="text-textMuted mb-8 flex-1 leading-relaxed">Yıkılan altyapı sonrası kamplardaki sivillere sürdürülebilir ve güneş enerjisi ile çalışan mobil su arıtma tesislerinin kurulması.</p>
+            <button onClick={() => setActiveProject({ id: 'c1', company: 'Gazze Umut Güneşi Derneği', title: 'Gazze Temiz Su Arıtma Projesi', desc: 'Yıkılan altyapı sonrası kamplardaki sivillere sürdürülebilir ve güneş enerjisi ile çalışan mobil su arıtma tesislerinin kurulması.', isCharity: true })} className="w-full btn-ghost border-[#10b981] text-[#10b981] hover:bg-[#10b981]/10 mt-auto">
               <HeartHandshake className="w-5 h-5 mr-2" /> {t('common.donate')}
             </button>
           </div>
@@ -1041,10 +1041,10 @@ export default function HybridFundPlatform() {
             </div>
           </div>
           <div className="p-8 flex-1 flex flex-col bg-surface">
-            <span className="text-xs font-bold uppercase tracking-widest text-textMuted mb-2 block">Cansuyu Derneği</span>
-            <h3 className="text-2xl font-black text-textMain leading-tight mb-4">Gazze Acil Gıda Kampanyası</h3>
-            <p className="text-textMuted mb-8 flex-1 leading-relaxed">Çatışma bölgelerinde yer alan sivillere yönelik temel gıda ve tıbbi malzeme içeren acil yardım kolileri.</p>
-            <button onClick={() => setActiveProject({ id: 'c2', company: 'Cansuyu Derneği', title: 'Gazze Acil Gıda Kampanyası', desc: 'Çatışma bölgelerinde yer alan sivillere yönelik temel gıda ve tıbbi malzeme içeren acil yardım kolileri.', isCharity: true })} className="w-full btn-ghost border-[#f59e0b] text-[#f59e0b] hover:bg-[#f59e0b]/10 mt-auto">
+            <span className="text-xs font-bold uppercase tracking-widest text-textMuted mb-2 block">Kudüs İmar ve Eğitim Kooperatifi</span>
+            <h3 className="text-2xl font-black text-textMain leading-tight mb-4">Filistin Çocukları Eğitim Çadırları</h3>
+            <p className="text-textMuted mb-8 flex-1 leading-relaxed">Okulları yıkılan bölgelerde çocukların eğitimine devam edebilmesi için tam donanımlı teknolojik eğitim çadırları ve materyal desteği.</p>
+            <button onClick={() => setActiveProject({ id: 'c2', company: 'Kudüs İmar ve Eğitim Kooperatifi', title: 'Filistin Çocukları Eğitim Çadırları', desc: 'Okulları yıkılan bölgelerde çocukların eğitimine devam edebilmesi için tam donanımlı teknolojik eğitim çadırları ve materyal desteği.', isCharity: true })} className="w-full btn-ghost border-[#f59e0b] text-[#f59e0b] hover:bg-[#f59e0b]/10 mt-auto">
               <HeartHandshake className="w-5 h-5 mr-2" /> {t('common.donate')}
             </button>
           </div>
