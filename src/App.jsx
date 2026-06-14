@@ -884,10 +884,10 @@ export default function HybridFundPlatform() {
   /* ── DEBT TAB ── */
   const DebtTab = () => {
     const projects = [
+      { id: 4, company: "Gaza Altyapı A.Ş.", title: "Güneş Enerjili Mobil Su Arıtma", desc: "Tahrip olan su şebekesine alternatif taşınabilir güneş enerjili su arıtma tesisleri.", returnRate: 13.0, risk: "B-", raised: 120000, target: 150000, type: "İstisna Sukuk", image: "https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?q=80&w=1472" },
       { id: 1, company: "LogiSpeed A.Ş.", title: "Körfez Lojistik Filo Büyümesi", desc: "Genişleyen operasyonlar için yeni ticari araç alımı finansmanı.", returnRate: 14.5, risk: "A-", raised: 125000, target: 150000, type: "İcara Sukuk", image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=1470" },
       { id: 2, company: "GreenEnergy Ltd.", title: "Güneş Paneli Ekipman Alımı", desc: "Yenilenebilir enerji santrali kurulumu için hammadde alımı.", returnRate: 16.0, risk: "B+", raised: 45000, target: 100000, type: "Emtia Murabaha", image: "https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=1472" },
-      { id: 3, company: "El-Amel İnşaat", title: "Gazze Acil Prefabrik Konut Üretimi", desc: "Gazze'deki evsiz kalan siviller için prefabrik yaşam alanları üretiminde hammadde alım finansmanı.", returnRate: 11.5, risk: "B", raised: 85000, target: 200000, type: "Murabaha", image: "https://images.unsplash.com/photo-1541888086925-920a0b672727?q=80&w=1470" },
-      { id: 4, company: "Gaza Altyapı A.Ş.", title: "Güneş Enerjili Mobil Su Arıtma", desc: "Tahrip olan su şebekesine alternatif taşınabilir güneş enerjili su arıtma tesisleri.", returnRate: 13.0, risk: "B-", raised: 120000, target: 150000, type: "İstisna Sukuk", image: "https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?q=80&w=1472" }
+      { id: 3, company: "El-Amel İnşaat", title: "Gazze Acil Prefabrik Konut Üretimi", desc: "Gazze'deki evsiz kalan siviller için prefabrik yaşam alanları üretiminde hammadde alım finansmanı.", returnRate: 11.5, risk: "B", raised: 85000, target: 200000, type: "Murabaha", image: "https://images.unsplash.com/photo-1541888086925-920a0b672727?q=80&w=1470" }
     ];
 
     return (
@@ -937,9 +937,9 @@ export default function HybridFundPlatform() {
   /* ── EQUITY TAB ── */
   const EquityTab = () => {
     const projects = [
+      { id: 3, company: "Seri A", title: "Bina-AI Hasar Tespit Drone Ağı", desc: "Gazze'deki yıkılan binaların yeniden inşası için 3D haritalama ve hasar tespiti yapan otonom drone filosu.", valuation: 8000000, risk: "C+", raised: 420000, target: 600000, type: "PropTech / AI", image: "https://images.unsplash.com/photo-1508614589041-895b88991e3e?q=80&w=1470", isEquity: true, sharePrice: 25, chartPath: "M0,30 Q15,30 30,25 T60,15 T100,0", multiplier: "2.8x" },
       { id: 1, company: "Seri A", title: "PayTech İslami Cüzdan", desc: "Z kuşağı için sıfır faizli akıllı harcama uygulaması.", valuation: 5000000, risk: "C+", raised: 820000, target: 1062500, type: "FinTech / Z Kuşağı", image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=1370", isEquity: true, sharePrice: 50, chartPath: "M0,30 Q25,25 40,20 T75,10 T100,0", multiplier: "3.5x" },
-      { id: 2, company: "Tohum Yatırımı", title: "GazaTech Mobil Sağlık", desc: "Gazze'deki doktorların dünya çapındaki uzmanlarla çalışmasını sağlayan tele-tıp platformu.", valuation: 2000000, risk: "C", raised: 150000, target: 500000, type: "HealthTech / Gazze", image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=1470", isEquity: true, sharePrice: 15, chartPath: "M0,30 C30,20 40,28 60,15 S80,5 100,0", multiplier: "5.0x" },
-      { id: 3, company: "Seri A", title: "Bina-AI Hasar Tespit Drone Ağı", desc: "Gazze'deki yıkılan binaların yeniden inşası için 3D haritalama ve hasar tespiti yapan otonom drone filosu.", valuation: 8000000, risk: "C+", raised: 420000, target: 600000, type: "PropTech / AI", image: "https://images.unsplash.com/photo-1508614589041-895b88991e3e?q=80&w=1470", isEquity: true, sharePrice: 25, chartPath: "M0,30 Q15,30 30,25 T60,15 T100,0", multiplier: "2.8x" }
+      { id: 2, company: "Tohum Yatırımı", title: "GazaTech Mobil Sağlık", desc: "Gazze'deki doktorların dünya çapındaki uzmanlarla çalışmasını sağlayan tele-tıp platformu.", valuation: 2000000, risk: "C", raised: 150000, target: 500000, type: "HealthTech / Gazze", image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=1470", isEquity: true, sharePrice: 15, chartPath: "M0,30 C30,20 40,28 60,15 S80,5 100,0", multiplier: "5.0x" }
     ];
 
     return (
