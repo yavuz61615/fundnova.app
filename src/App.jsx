@@ -533,27 +533,27 @@ export default function HybridFundPlatform() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
           <div className="card text-center flex flex-col items-center bg-surface hover:shadow-lg transition-all duration-300">
             <div className="w-24 h-24 rounded-full overflow-hidden border-2 border-accent/30 mb-4">
-              <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=256&h=256&fit=crop" alt="Tahsis Yöneticisi" className="w-full h-full object-cover" />
+              <img src="/oktay-solmaz.png" alt="Oktay Solmaz" className="w-full h-full object-cover" />
             </div>
-            <h4 className="text-xl font-bold text-textMain mb-1">Ahmet Yılmaz</h4>
+            <h4 className="text-xl font-bold text-textMain mb-1">Oktay Solmaz</h4>
             <p className="text-accent font-semibold text-xs uppercase tracking-wider mb-4">Tahsis Yöneticisi</p>
             <p className="text-sm text-textMuted leading-relaxed">Tedarikçi anlaşmaları ve fon onay süreçlerinin risk analizi ve uçtan uca takibi.</p>
           </div>
 
           <div className="card text-center flex flex-col items-center bg-surface hover:shadow-lg transition-all duration-300">
             <div className="w-24 h-24 rounded-full overflow-hidden border-2 border-accent/30 mb-4">
-              <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=256&h=256&fit=crop" alt="Operasyon Denetmeni" className="w-full h-full object-cover" />
+              <img src="/ugur-cicek.png" alt="Uğur Çiçek" className="w-full h-full object-cover" />
             </div>
-            <h4 className="text-xl font-bold text-textMain mb-1">Ayşe Demir</h4>
+            <h4 className="text-xl font-bold text-textMain mb-1">Uğur Çiçek</h4>
             <p className="text-accent font-semibold text-xs uppercase tracking-wider mb-4">Operasyon Denetmeni</p>
             <p className="text-sm text-textMuted leading-relaxed">Murabaha işlemlerindeki satınalma, faturalandırma ve şeffaflık uygunluklarının denetimi.</p>
           </div>
 
           <div className="card text-center flex flex-col items-center bg-surface hover:shadow-lg transition-all duration-300">
             <div className="w-24 h-24 rounded-full overflow-hidden border-2 border-accent/30 mb-4">
-              <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=256&h=256&fit=crop" alt="Risk Analisti" className="w-full h-full object-cover" />
+              <img src="/ugur-dogan.png" alt="Uğur Doğan" className="w-full h-full object-cover" />
             </div>
-            <h4 className="text-xl font-bold text-textMain mb-1">Kemal Şahin</h4>
+            <h4 className="text-xl font-bold text-textMain mb-1">Uğur Doğan</h4>
             <p className="text-accent font-semibold text-xs uppercase tracking-wider mb-4">Risk Analisti</p>
             <p className="text-sm text-textMuted leading-relaxed">Projelerin nakit akışı ve geri dönüş modellerinin değerlendirilmesi.</p>
           </div>
