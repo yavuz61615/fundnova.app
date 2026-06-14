@@ -542,7 +542,7 @@ export default function HybridFundPlatform() {
 
           <div className="card text-center flex flex-col items-center bg-surface hover:shadow-lg transition-all duration-300">
             <div className="w-24 h-24 rounded-full overflow-hidden border-2 border-accent/30 mb-4">
-              <img src="/ugur-cicek.png" alt="Uğur Çiçek" className="w-full h-full object-cover" />
+              <img src="/ugur-cicek.jpg" alt="Uğur Çiçek" className="w-full h-full object-cover" />
             </div>
             <h4 className="text-xl font-bold text-textMain mb-1">Uğur Çiçek</h4>
             <p className="text-accent font-semibold text-xs uppercase tracking-wider mb-4">Operasyon Denetmeni</p>
@@ -551,7 +551,7 @@ export default function HybridFundPlatform() {
 
           <div className="card text-center flex flex-col items-center bg-surface hover:shadow-lg transition-all duration-300">
             <div className="w-24 h-24 rounded-full overflow-hidden border-2 border-accent/30 mb-4">
-              <img src="/ugur-dogan.png" alt="Uğur Doğan" className="w-full h-full object-cover" />
+              <img src="/ugur-dogan.jpg" alt="Uğur Doğan" className="w-full h-full object-cover" />
             </div>
             <h4 className="text-xl font-bold text-textMain mb-1">Uğur Doğan</h4>
             <p className="text-accent font-semibold text-xs uppercase tracking-wider mb-4">Risk Analisti</p>
