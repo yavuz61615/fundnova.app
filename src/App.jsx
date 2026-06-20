@@ -943,89 +943,74 @@ export default function HybridFundPlatform() {
           )}
         </div>
 
-        {/* Blokzincir Cüzdanım ve Sertifikalarım / Gelen Fonlar */}
-        {userProfile !== 'ngo' ? (
-          <div className="mb-12 animate-in fade-in slide-in-from-bottom-4">
-          <h3 className="text-2xl font-black text-textMain mb-6 flex items-center">
-            <Wallet className="w-6 h-6 mr-3 text-primary" /> Blokzincir Cüzdanım
-          </h3>
-          <div className="card bg-surface border border-borderBase">
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 pb-6 border-b border-borderBase gap-4">
-               <div>
-                  <span className="text-xs font-bold text-textMuted uppercase tracking-widest block mb-1">Toplam Varlık Değeri</span>
-                  <span className="text-3xl font-black text-textMain font-mono">$1,250.00</span>
-               </div>
-               <div className="md:text-right">
-                  <span className="text-xs font-bold text-textMuted uppercase tracking-widest block mb-1">Akıllı Cüzdan Adresi (Account Abstraction)</span>
-                  <span className="text-sm font-mono text-primary bg-primary/10 px-3 py-1 rounded-lg">0x71C7...8b098</span>
-               </div>
+        {/* STK (NGO) DASHBOARD */}
+        {userProfile === 'ngo' && (
+          <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="card bg-surface border-l-4 border-l-[#10b981] p-6 shadow-sm">
+                <h4 className="text-textMuted text-xs font-bold uppercase tracking-widest mb-2">Toplam Toplanan Fon</h4>
+                <div className="text-3xl font-black text-[#10b981] font-mono">$345,000</div>
+                <div className="text-xs text-textMuted mt-2 flex items-center"><TrendingUp className="w-3 h-3 mr-1 text-[#10b981]"/> +12% geçen aya göre</div>
+              </div>
+              <div className="card bg-surface border-l-4 border-l-primary p-6 shadow-sm">
+                <h4 className="text-textMuted text-xs font-bold uppercase tracking-widest mb-2">Başarıyla Tamamlanan</h4>
+                <div className="text-3xl font-black text-textMain font-mono">12 Proje</div>
+                <div className="text-xs text-textMuted mt-2">Toplam 15 projeden</div>
+              </div>
+              <div className="card bg-surface border-l-4 border-l-accent p-6 shadow-sm">
+                <h4 className="text-textMuted text-xs font-bold uppercase tracking-widest mb-2">Aktif Bağışçılar</h4>
+                <div className="text-3xl font-black text-textMain font-mono">4,250</div>
+                <div className="text-xs text-textMuted mt-2">1,200 düzenli bağışçı</div>
+              </div>
             </div>
 
-            <div>
-              <h4 className="text-lg font-bold text-textMain mb-4 flex items-center">
-                <ShieldCheck className="w-5 h-5 mr-2 text-primary" /> Sertifikalarım
-              </h4>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="bg-background border border-borderBase rounded-xl p-4 flex items-center justify-between hover:border-primary transition-colors">
-                   <div className="flex items-center">
-                      <div className="w-12 h-12 bg-[#10b981]/10 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
-                         <CheckCircle className="w-6 h-6 text-[#10b981]" />
-                      </div>
-                      <div>
-                         <span className="text-sm font-bold text-textMain block line-clamp-1">GZ-SUK (Gazze Mobil Su Arıtma)</span>
-                         <span className="text-xs text-textMuted">İstisna Sukuk • 10 Adet</span>
-                      </div>
-                   </div>
-                   <button className="text-primary hover:text-primary/80 text-sm font-bold bg-primary/10 px-3 py-1.5 rounded-lg flex-shrink-0 ml-2">İncele</button>
+            <div className="card bg-surface p-8 shadow-sm">
+              <h3 className="text-xl font-bold text-textMain mb-6 flex items-center border-b border-borderBase pb-4">
+                <Activity className="w-5 h-5 mr-3 text-[#10b981]" /> Proje Başarı Durumları
+              </h3>
+              <div className="space-y-8">
+                <div>
+                  <div className="flex justify-between items-end mb-2">
+                    <div>
+                      <h4 className="font-bold text-textMain text-lg">Gazze Temiz Su Arıtma Tesisi</h4>
+                      <p className="text-xs text-textMuted">Hedef: $150,000</p>
+                    </div>
+                    <div className="text-right">
+                      <span className="text-sm font-bold text-[#10b981]">$120,000 Toplandı</span>
+                    </div>
+                  </div>
+                  <div className="w-full bg-background rounded-full h-3 overflow-hidden border border-borderBase">
+                    <div className="bg-[#10b981] h-full rounded-full shadow-[0_0_10px_rgba(16,185,129,0.5)]" style={{ width: '80%' }}></div>
+                  </div>
                 </div>
-                
-                <div className="bg-background border border-borderBase rounded-xl p-4 flex items-center justify-between hover:border-primary transition-colors">
-                   <div className="flex items-center">
-                      <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
-                         <TrendingUp className="w-6 h-6 text-accent" />
-                      </div>
-                      <div>
-                         <span className="text-sm font-bold text-textMain block line-clamp-1">BAI-HSS (Bina-AI Drone)</span>
-                         <span className="text-xs text-textMuted">Paya Dayalı • 5 Lot</span>
-                      </div>
-                   </div>
-                   <button className="text-primary hover:text-primary/80 text-sm font-bold bg-primary/10 px-3 py-1.5 rounded-lg flex-shrink-0 ml-2">İncele</button>
+
+                <div>
+                  <div className="flex justify-between items-end mb-2">
+                    <div>
+                      <h4 className="font-bold text-textMain text-lg">Gazze Acil Prefabrik Konut</h4>
+                      <p className="text-xs text-textMuted">Hedef: $200,000</p>
+                    </div>
+                    <div className="text-right">
+                      <span className="text-sm font-bold text-[#10b981]">$85,000 Toplandı</span>
+                    </div>
+                  </div>
+                  <div className="w-full bg-background rounded-full h-3 overflow-hidden border border-borderBase">
+                    <div className="bg-[#10b981] h-full rounded-full shadow-[0_0_10px_rgba(16,185,129,0.5)]" style={{ width: '42.5%' }}></div>
+                  </div>
                 </div>
-              </div>
-            </div>
-          </div>
-        ) : (
-          <div className="mb-12 animate-in fade-in slide-in-from-bottom-4">
-            <h3 className="text-2xl font-black text-textMain mb-6 flex items-center">
-              <Activity className="w-6 h-6 mr-3 text-[#10b981]" /> Gelen Fonlar
-            </h3>
-            <div className="card bg-surface border border-borderBase">
-              <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 pb-6 border-b border-borderBase gap-4">
-                 <div>
-                    <span className="text-xs font-bold text-textMuted uppercase tracking-widest block mb-1">Toplam Toplanan Fon</span>
-                    <span className="text-3xl font-black text-[#10b981] font-mono">$125,450.00</span>
-                 </div>
-                 <div className="md:text-right">
-                    <span className="text-xs font-bold text-textMuted uppercase tracking-widest block mb-1">Aylık Büyüme</span>
-                    <span className="text-sm font-bold text-[#10b981] bg-[#10b981]/10 px-3 py-1 rounded-lg">+14.5%</span>
-                 </div>
-              </div>
-              <div>
-                <h4 className="text-lg font-bold text-textMain mb-4 flex items-center">
-                  <Heart className="w-5 h-5 mr-2 text-[#10b981]" /> Aktif Kampanyalar
-                </h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="bg-background border border-borderBase rounded-xl p-4 flex items-center justify-between hover:border-[#10b981] transition-colors">
-                     <div className="flex items-center">
-                        <div className="w-12 h-12 bg-[#10b981]/10 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
-                           <Heart className="w-6 h-6 text-[#10b981]" />
-                        </div>
-                        <div>
-                           <span className="text-sm font-bold text-textMain block line-clamp-1">Gazze Temiz Su Arıtma Projesi</span>
-                           <span className="text-xs text-textMuted">%85 Tamamlandı • $12,000 Bekliyor</span>
-                        </div>
-                     </div>
-                     <button className="text-[#10b981] hover:text-[#10b981]/80 text-sm font-bold bg-[#10b981]/10 px-3 py-1.5 rounded-lg flex-shrink-0 ml-2">Detay</button>
+
+                <div>
+                  <div className="flex justify-between items-end mb-2">
+                    <div>
+                      <h4 className="font-bold text-textMain text-lg">Filistin Çocukları Eğitim Çadırları</h4>
+                      <p className="text-xs text-textMuted">Hedef: $50,000</p>
+                    </div>
+                    <div className="text-right">
+                      <span className="text-sm font-bold text-primary">$50,000 Toplandı (Tamamlandı)</span>
+                    </div>
+                  </div>
+                  <div className="w-full bg-background rounded-full h-3 overflow-hidden border border-borderBase">
+                    <div className="bg-primary h-full rounded-full shadow-[0_0_10px_rgba(56,189,248,0.5)]" style={{ width: '100%' }}></div>
                   </div>
                 </div>
               </div>
@@ -1033,31 +1018,11 @@ export default function HybridFundPlatform() {
           </div>
         )}
 
-        {!isCorpOrNgo ? (
-          <div>
-            <h3 className="text-2xl font-black text-textMain mb-6 flex items-center">
-              <Activity className="w-6 h-6 mr-3 text-primary" /> {t('dashboard.recommendations')}
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {userProfile === 'micro' ? (
-                <div className="card border-l-4 border-l-[#10b981] bg-surface">
-                  <h4 className="font-bold text-textMain text-lg mb-2">Filistin Çocukları Eğitim Çadırları</h4>
-                  <p className="text-textMuted text-sm mb-4">Risk: Çok Düşük | Minimum: $10</p>
-                  <button onClick={() => setActiveTab('charity')} className="w-full btn-ghost text-sm py-2 text-[#10b981] border-[#10b981]">İncele</button>
-                </div>
-              ) : (
-                <div className="card border-l-4 border-l-accent bg-surface">
-                  <h4 className="font-bold text-textMain text-lg mb-2">GazaTech Mobil Sağlık</h4>
-                  <p className="text-textMuted text-sm mb-4">Risk: C (Tohum) | Beklenen Getiri: %35</p>
-                  <button onClick={() => setActiveTab('equity')} className="w-full btn-ghost text-sm py-2 text-accent border-accent">İncele</button>
-                </div>
-              )}
-            </div>
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        {/* KURUMSAL (CORP) DASHBOARD */}
+        {userProfile === 'corp' && (
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 animate-in fade-in slide-in-from-bottom-4">
             <div className="lg:col-span-2 space-y-8">
-              <div className="card bg-surface">
+              <div className="card bg-surface shadow-sm">
                 <h3 className="text-xl font-bold text-textMain mb-6 flex items-center border-b border-borderBase pb-4">
                   <LayoutDashboard className="w-5 h-5 mr-3 text-primary" /> {t('dashboard.campaigns')}
                 </h3>
@@ -1067,7 +1032,7 @@ export default function HybridFundPlatform() {
               </div>
             </div>
             <div className="space-y-8">
-              <div className="card bg-surface">
+              <div className="card bg-surface shadow-sm">
                 <h3 className="text-xl font-bold text-textMain mb-6 flex items-center border-b border-borderBase pb-4">
                   <BarChart3 className="w-5 h-5 mr-3 text-primary" /> {t('dashboard.marketing')}
                 </h3>
@@ -1076,6 +1041,83 @@ export default function HybridFundPlatform() {
                   <li className="flex items-center text-textMain font-medium p-3 hover:bg-background rounded-lg transition-colors cursor-pointer border border-transparent hover:border-borderBase"><Users className="w-4 h-4 text-primary mr-3" /> Yatırımcı E-posta Bülteni</li>
                   <li className="flex items-center text-textMain font-medium p-3 hover:bg-background rounded-lg transition-colors cursor-pointer border border-transparent hover:border-borderBase"><Activity className="w-4 h-4 text-primary mr-3" /> {t('dashboard.analytics')}</li>
                 </ul>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* BİREYSEL (MICRO / MACRO) DASHBOARD */}
+        {!isCorpOrNgo && (
+          <div className="animate-in fade-in slide-in-from-bottom-4">
+            <div className="mb-12">
+              <h3 className="text-2xl font-black text-textMain mb-6 flex items-center">
+                <Wallet className="w-6 h-6 mr-3 text-primary" /> Blokzincir Cüzdanım
+              </h3>
+              <div className="card bg-surface border border-borderBase shadow-sm">
+                <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 pb-6 border-b border-borderBase gap-4">
+                   <div>
+                      <span className="text-xs font-bold text-textMuted uppercase tracking-widest block mb-1">Toplam Varlık Değeri</span>
+                      <span className="text-3xl font-black text-textMain font-mono">$1,250.00</span>
+                   </div>
+                   <div className="md:text-right">
+                      <span className="text-xs font-bold text-textMuted uppercase tracking-widest block mb-1">Akıllı Cüzdan Adresi (Account Abstraction)</span>
+                      <span className="text-sm font-mono text-primary bg-primary/10 px-3 py-1 rounded-lg">0x71C7...8b098</span>
+                   </div>
+                </div>
+
+                <div>
+                  <h4 className="text-lg font-bold text-textMain mb-4 flex items-center">
+                    <ShieldCheck className="w-5 h-5 mr-2 text-primary" /> Sertifikalarım
+                  </h4>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="bg-background border border-borderBase rounded-xl p-4 flex items-center justify-between hover:border-primary transition-colors">
+                       <div className="flex items-center">
+                          <div className="w-12 h-12 bg-[#10b981]/10 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                             <CheckCircle className="w-6 h-6 text-[#10b981]" />
+                          </div>
+                          <div>
+                             <span className="text-sm font-bold text-textMain block line-clamp-1">GZ-SUK (Gazze Mobil Su Arıtma)</span>
+                             <span className="text-xs text-textMuted">İstisna Sukuk • 10 Adet</span>
+                          </div>
+                       </div>
+                       <button className="text-primary hover:text-primary/80 text-sm font-bold bg-primary/10 px-3 py-1.5 rounded-lg flex-shrink-0 ml-2">İncele</button>
+                    </div>
+                    
+                    <div className="bg-background border border-borderBase rounded-xl p-4 flex items-center justify-between hover:border-primary transition-colors">
+                       <div className="flex items-center">
+                          <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                             <TrendingUp className="w-6 h-6 text-accent" />
+                          </div>
+                          <div>
+                             <span className="text-sm font-bold text-textMain block line-clamp-1">BAI-HSS (Bina-AI Drone)</span>
+                             <span className="text-xs text-textMuted">Paya Dayalı • 5 Lot</span>
+                          </div>
+                       </div>
+                       <button className="text-primary hover:text-primary/80 text-sm font-bold bg-primary/10 px-3 py-1.5 rounded-lg flex-shrink-0 ml-2">İncele</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h3 className="text-2xl font-black text-textMain mb-6 flex items-center">
+                <Activity className="w-6 h-6 mr-3 text-primary" /> {t('dashboard.recommendations')}
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {userProfile === 'micro' ? (
+                  <div className="card border-l-4 border-l-[#10b981] bg-surface shadow-sm">
+                    <h4 className="font-bold text-textMain text-lg mb-2">Filistin Çocukları Eğitim Çadırları</h4>
+                    <p className="text-textMuted text-sm mb-4">Risk: Çok Düşük | Minimum: $10</p>
+                    <button onClick={() => setActiveTab('charity')} className="w-full btn-ghost text-sm py-2 text-[#10b981] border-[#10b981]">İncele</button>
+                  </div>
+                ) : (
+                  <div className="card border-l-4 border-l-accent bg-surface shadow-sm">
+                    <h4 className="font-bold text-textMain text-lg mb-2">GazaTech Mobil Sağlık</h4>
+                    <p className="text-textMuted text-sm mb-4">Risk: C (Tohum) | Beklenen Getiri: %35</p>
+                    <button onClick={() => setActiveTab('equity')} className="w-full btn-ghost text-sm py-2 text-accent border-accent">İncele</button>
+                  </div>
+                )}
               </div>
             </div>
           </div>
