@@ -65,6 +65,7 @@ export default function HybridFundPlatform() {
     const sharePrice = project.sharePrice || 50;
     const [investAmount, setInvestAmount] = useState(1000);
     const [showDetails, setShowDetails] = useState(false);
+    const [activeDetailTab, setActiveDetailTab] = useState(project.title === "Bina-AI Hasar Tespit Drone Ağı" ? 'Genel Bakış' : (project.title === "Güneş Enerjili Mobil Su Arıtma" ? 'Proje Özeti' : ''));
     const [isRecurring, setIsRecurring] = useState(false);
 
     const amount = isEquity ? (Number(lotAmount) * sharePrice) : (Number(investAmount) || 0);
@@ -111,15 +112,117 @@ export default function HybridFundPlatform() {
                   </button>
                 ) : (
                   <div className="bg-background border border-borderBase rounded-xl p-6 mt-4 space-y-4 animate-in fade-in slide-in-from-top-4">
-                    <h4 className="text-textMain font-black border-b border-borderBase pb-2">{t('modal.detailsTitle')}</h4>
-                    <div className="space-y-3">
-                      <div><span className="text-xs font-bold text-textMuted uppercase block mb-0.5">{t('modal.process')}</span><p className="text-sm text-textMain font-medium leading-relaxed">Proje 3 faza ayrılmıştır: İzin & Altyapı, Tedarik & Kurulum, Faaliyet.</p></div>
-                      <div><span className="text-xs font-bold text-textMuted uppercase block mb-0.5">{t('modal.location')}</span><p className="text-sm text-textMain font-medium">Uluslararası</p></div>
-                      <div><span className="text-xs font-bold text-textMuted uppercase block mb-0.5">{t('modal.durationPlan')}</span><p className="text-sm text-textMain font-medium">{details.duration}</p></div>
-                      <div><span className="text-xs font-bold text-textMuted uppercase block mb-0.5">{t('modal.agreements')}</span><p className="text-sm text-textMain font-medium">Akıllı Sözleşme (Smart Contract) & Teminatlı Hukuki Sözleşmeler.</p></div>
-                      <div><span className="text-xs font-bold text-textMuted uppercase block mb-0.5">{t('modal.financials')}</span><p className="text-sm text-textMain font-medium leading-relaxed">Toplanan fon sadece projenin ana giderlerinde kullanılır.</p></div>
-                      <div><span className="text-xs font-bold text-textMuted uppercase block mb-0.5">{t('modal.trust')}</span><p className="text-sm text-textMain font-medium leading-relaxed">Uluslararası Bağımsız Denetim Firması tarafından raporlama.</p></div>
-                    </div>
+                    {project.title === "Bina-AI Hasar Tespit Drone Ağı" ? (
+                      <div>
+                        <div className="flex border-b border-borderBase mb-4 overflow-x-auto hide-scrollbar">
+                          {['Genel Bakış', 'Teknik Detaylar', 'Pazar Analizi', 'Gelir Modeli'].map(tab => (
+                            <button
+                              key={tab}
+                              onClick={() => setActiveDetailTab(tab)}
+                              className={`whitespace-nowrap px-4 py-2 font-bold text-sm border-b-2 transition-colors ${activeDetailTab === tab ? 'border-primary text-primary' : 'border-transparent text-textMuted hover:text-textMain'}`}
+                            >
+                              {tab}
+                            </button>
+                          ))}
+                        </div>
+                        <div className="space-y-3 min-h-[200px]">
+                          {activeDetailTab === 'Genel Bakış' && (
+                            <div className="animate-in fade-in">
+                              <p className="text-sm text-textMain leading-relaxed mb-3">
+                                <strong>Bina-AI Hasar Tespit Drone Ağı</strong> projesi, yıkılmış veya ağır hasar almış bölgelerde arama kurtarma, enkaz analizi ve yeniden inşa süreçlerini hızlandırmak için geliştirilmiş otonom bir sistemdir.
+                              </p>
+                              <p className="text-sm text-textMain leading-relaxed mb-2"><strong>Amacı:</strong> İnsan hayatını riske atmadan saniyeler içinde 3D haritalama yaparak hasar raporu sunmak.</p>
+                              <p className="text-sm text-textMain leading-relaxed"><strong>Kullanım Alanları:</strong> Deprem bölgeleri, savaş alanları, doğal afet sonrası acil müdahale gerektiren lokasyonlar.</p>
+                            </div>
+                          )}
+                          {activeDetailTab === 'Teknik Detaylar' && (
+                            <div className="animate-in fade-in space-y-3">
+                              <div><span className="text-xs font-bold text-textMuted uppercase block mb-0.5">Yapay Zeka (AI) Entegrasyonu</span><p className="text-sm text-textMain font-medium">Derin öğrenme algoritmalarıyla çatlakları, kolon hasarlarını ve moloz yoğunluğunu %98 doğrulukla analiz eder.</p></div>
+                              <div><span className="text-xs font-bold text-textMuted uppercase block mb-0.5">Donanım Kapasitesi</span><p className="text-sm text-textMain font-medium">LiDAR sensörleri, termal kameralar ve engelden kaçınma radarları (Obstacle Avoidance) ile donatılmıştır.</p></div>
+                              <div><span className="text-xs font-bold text-textMuted uppercase block mb-0.5">Otonom Uçuş</span><p className="text-sm text-textMain font-medium">GPS sinyalinin olmadığı yıkım bölgelerinde dahi V-SLAM teknolojisiyle konum belirleyerek güvenli uçuş sağlar.</p></div>
+                            </div>
+                          )}
+                          {activeDetailTab === 'Pazar Analizi' && (
+                            <div className="animate-in fade-in space-y-3">
+                              <p className="text-sm text-textMain leading-relaxed">Küresel PropTech ve afet yönetimi dron pazarının 2030 yılına kadar 15 Milyar doları aşması bekleniyor. Özellikle hızlı kentleşme ve iklim değişikliği kaynaklı afetler, otonom hasar tespit sistemlerine olan ihtiyacı katlanarak artırmaktadır.</p>
+                              <ul className="list-disc pl-5 text-sm text-textMain space-y-1 mt-2 marker:text-primary">
+                                <li>Sigorta şirketleri için ekspertiz maliyetlerinde %60 azalma.</li>
+                                <li>Devlet kurumları için anında müdahale koordinasyonu.</li>
+                                <li>İnşaat şirketleri için hafriyat/moloz hacmi hesaplama kolaylığı.</li>
+                              </ul>
+                            </div>
+                          )}
+                          {activeDetailTab === 'Gelir Modeli' && (
+                            <div className="animate-in fade-in space-y-3">
+                              <div><span className="text-xs font-bold text-textMuted uppercase block mb-0.5">SaaS & DaaS (Drone-as-a-Service)</span><p className="text-sm text-textMain font-medium">Kurumlar donanımı satın almak yerine aylık/yıllık abonelik modeliyle hizmetten faydalanır.</p></div>
+                              <div><span className="text-xs font-bold text-textMuted uppercase block mb-0.5">Raporlama Başına Ücretlendirme</span><p className="text-sm text-textMain font-medium">Oluşturulan 3D model ve hasar tespit raporları başına mikro ödemeler tahsil edilir.</p></div>
+                              <div><span className="text-xs font-bold text-textMuted uppercase block mb-0.5">B2B Lisanslama</span><p className="text-sm text-textMain font-medium">Geliştirilen yapay zeka algoritmasının diğer dron üreticilerine API lisansı olarak satılması.</p></div>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    ) : project.title === "Güneş Enerjili Mobil Su Arıtma" ? (
+                      <div>
+                        <div className="flex border-b border-borderBase mb-4 overflow-x-auto hide-scrollbar">
+                          {['Proje Özeti', 'Teknoloji', 'Sosyal Etki', 'Finansal Yapı'].map(tab => (
+                            <button
+                              key={tab}
+                              onClick={() => setActiveDetailTab(tab)}
+                              className={`whitespace-nowrap px-4 py-2 font-bold text-sm border-b-2 transition-colors ${activeDetailTab === tab ? 'border-primary text-primary' : 'border-transparent text-textMuted hover:text-textMain'}`}
+                            >
+                              {tab}
+                            </button>
+                          ))}
+                        </div>
+                        <div className="space-y-3 min-h-[200px]">
+                          {activeDetailTab === 'Proje Özeti' && (
+                            <div className="animate-in fade-in space-y-2">
+                              <p className="text-sm text-textMain leading-relaxed mb-3">
+                                <strong>Güneş Enerjili Mobil Su Arıtma</strong> projesi, Gazze gibi içme suyu altyapısının tamamen tahrip olduğu kriz bölgelerine acil ve sürdürülebilir temiz su sağlamak amacıyla başlatılmış bir altyapı girişimidir.
+                              </p>
+                              <p className="text-sm text-textMain leading-relaxed mb-1"><strong>Günlük Kapasite:</strong> Tesis başına 10.000 kişinin su ihtiyacı.</p>
+                              <p className="text-sm text-textMain leading-relaxed mb-1"><strong>Enerji Kaynağı:</strong> %100 Monokristal Güneş Panelleri (Şebeke bağımsız).</p>
+                              <p className="text-sm text-textMain leading-relaxed"><strong>Kurulum Süresi:</strong> Modüler yapısı sayesinde sadece 48 saat.</p>
+                            </div>
+                          )}
+                          {activeDetailTab === 'Teknoloji' && (
+                            <div className="animate-in fade-in space-y-3">
+                              <div><span className="text-xs font-bold text-textMuted uppercase block mb-0.5">Ters Osmoz (Reverse Osmosis) Sistemi</span><p className="text-sm text-textMain font-medium">Deniz suyu ve yeraltı acı sularını çok aşamalı filtrelerden geçirerek DSÖ (WHO) standartlarında içme suyuna dönüştürür.</p></div>
+                              <div><span className="text-xs font-bold text-textMuted uppercase block mb-0.5">Güneş Enerjisi & Batarya Depolama</span><p className="text-sm text-textMain font-medium">Gündüz güneşten aldığı enerjiyi dahili LFP (Lityum Demir Fosfat) bataryalara depolar, böylece gece boyunca kesintisiz arıtma yapar.</p></div>
+                              <div><span className="text-xs font-bold text-textMuted uppercase block mb-0.5">Mobilite & Dayanıklılık</span><p className="text-sm text-textMain font-medium">Standart 20-feet konteyner içine entegre edilmiştir. Tırlarla her yere taşınabilir, aşırı sıcaklara ve toz fırtınalarına karşı izole edilmiştir.</p></div>
+                            </div>
+                          )}
+                          {activeDetailTab === 'Sosyal Etki' && (
+                            <div className="animate-in fade-in space-y-3">
+                              <p className="text-sm text-textMain leading-relaxed">Bu proje, bir altyapı yatırımından öte hayati bir insani müdahaledir. Kirli su kaynaklı kolera, tifo gibi salgın hastalıkların önüne geçilmesi hedeflenmektedir.</p>
+                              <div className="bg-surface p-4 rounded-xl border border-borderBase mt-2">
+                                <p className="text-sm text-textMain font-bold italic mb-2">"Temiz suya erişim temel bir insan hakkıdır."</p>
+                                <p className="text-xs text-textMuted">Proje, Birleşmiş Milletler Sürdürülebilir Kalkınma Amaçları (SDG 6 - Temiz Su ve Sanitasyon) ile doğrudan uyumludur.</p>
+                              </div>
+                            </div>
+                          )}
+                          {activeDetailTab === 'Finansal Yapı' && (
+                            <div className="animate-in fade-in space-y-3">
+                              <div><span className="text-xs font-bold text-textMuted uppercase block mb-0.5">Sözleşme Türü: İstisna Sukuk</span><p className="text-sm text-textMain font-medium">Yatırımcılar, bu mobil arıtma tesislerinin üretim maliyetini finanse eder. Tesisler tamamlandığında kurumlara ve yardım vakıflarına satılarak/kiralanarak getiri sağlanır.</p></div>
+                              <div><span className="text-xs font-bold text-textMuted uppercase block mb-0.5">Hedeflenen Getiri</span><p className="text-sm text-textMain font-medium">Yıllık sabit %13 getiri oranı (Return Rate) belirlenmiştir.</p></div>
+                              <div><span className="text-xs font-bold text-textMuted uppercase block mb-0.5">Risk Analizi</span><p className="text-sm text-textMain font-medium">B- seviyesinde bir risk sınıfına sahiptir. Siyasi ve jeopolitik durumlar nedeniyle kısmi operasyonel gecikme riskleri içerebilir, ancak fonlar sigortalanmıştır.</p></div>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    ) : (
+                      <>
+                        <h4 className="text-textMain font-black border-b border-borderBase pb-2">{t('modal.detailsTitle')}</h4>
+                        <div className="space-y-3">
+                          <div><span className="text-xs font-bold text-textMuted uppercase block mb-0.5">{t('modal.process')}</span><p className="text-sm text-textMain font-medium leading-relaxed">Proje 3 faza ayrılmıştır: İzin & Altyapı, Tedarik & Kurulum, Faaliyet.</p></div>
+                          <div><span className="text-xs font-bold text-textMuted uppercase block mb-0.5">{t('modal.location')}</span><p className="text-sm text-textMain font-medium">Uluslararası</p></div>
+                          <div><span className="text-xs font-bold text-textMuted uppercase block mb-0.5">{t('modal.durationPlan')}</span><p className="text-sm text-textMain font-medium">{details.duration}</p></div>
+                          <div><span className="text-xs font-bold text-textMuted uppercase block mb-0.5">{t('modal.agreements')}</span><p className="text-sm text-textMain font-medium">Akıllı Sözleşme (Smart Contract) & Teminatlı Hukuki Sözleşmeler.</p></div>
+                          <div><span className="text-xs font-bold text-textMuted uppercase block mb-0.5">{t('modal.financials')}</span><p className="text-sm text-textMain font-medium leading-relaxed">Toplanan fon sadece projenin ana giderlerinde kullanılır.</p></div>
+                          <div><span className="text-xs font-bold text-textMuted uppercase block mb-0.5">{t('modal.trust')}</span><p className="text-sm text-textMain font-medium leading-relaxed">Uluslararası Bağımsız Denetim Firması tarafından raporlama.</p></div>
+                        </div>
+                      </>
+                    )}
                     <button onClick={() => setShowDetails(false)} className="text-textMuted font-bold text-xs flex items-center hover:text-textMain mt-4">
                       {t('modal.shrink')}
                     </button>
