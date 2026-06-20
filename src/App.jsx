@@ -934,6 +934,58 @@ export default function HybridFundPlatform() {
           )}
         </div>
 
+        {/* Blokzincir Cüzdanım ve Sertifikalarım */}
+        <div className="mb-12 animate-in fade-in slide-in-from-bottom-4">
+          <h3 className="text-2xl font-black text-textMain mb-6 flex items-center">
+            <Wallet className="w-6 h-6 mr-3 text-primary" /> Blokzincir Cüzdanım
+          </h3>
+          <div className="card bg-surface border border-borderBase">
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 pb-6 border-b border-borderBase gap-4">
+               <div>
+                  <span className="text-xs font-bold text-textMuted uppercase tracking-widest block mb-1">Toplam Varlık Değeri</span>
+                  <span className="text-3xl font-black text-textMain font-mono">$1,250.00</span>
+               </div>
+               <div className="md:text-right">
+                  <span className="text-xs font-bold text-textMuted uppercase tracking-widest block mb-1">Akıllı Cüzdan Adresi (Account Abstraction)</span>
+                  <span className="text-sm font-mono text-primary bg-primary/10 px-3 py-1 rounded-lg">0x71C7...8b098</span>
+               </div>
+            </div>
+
+            <div>
+              <h4 className="text-lg font-bold text-textMain mb-4 flex items-center">
+                <ShieldCheck className="w-5 h-5 mr-2 text-primary" /> Sertifikalarım
+              </h4>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="bg-background border border-borderBase rounded-xl p-4 flex items-center justify-between hover:border-primary transition-colors">
+                   <div className="flex items-center">
+                      <div className="w-12 h-12 bg-[#10b981]/10 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                         <CheckCircle className="w-6 h-6 text-[#10b981]" />
+                      </div>
+                      <div>
+                         <span className="text-sm font-bold text-textMain block line-clamp-1">GZ-SUK (Gazze Mobil Su Arıtma)</span>
+                         <span className="text-xs text-textMuted">İstisna Sukuk • 10 Adet</span>
+                      </div>
+                   </div>
+                   <button className="text-primary hover:text-primary/80 text-sm font-bold bg-primary/10 px-3 py-1.5 rounded-lg flex-shrink-0 ml-2">İncele</button>
+                </div>
+                
+                <div className="bg-background border border-borderBase rounded-xl p-4 flex items-center justify-between hover:border-primary transition-colors">
+                   <div className="flex items-center">
+                      <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                         <TrendingUp className="w-6 h-6 text-accent" />
+                      </div>
+                      <div>
+                         <span className="text-sm font-bold text-textMain block line-clamp-1">BAI-HSS (Bina-AI Drone)</span>
+                         <span className="text-xs text-textMuted">Paya Dayalı • 5 Lot</span>
+                      </div>
+                   </div>
+                   <button className="text-primary hover:text-primary/80 text-sm font-bold bg-primary/10 px-3 py-1.5 rounded-lg flex-shrink-0 ml-2">İncele</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {!isCorpOrNgo ? (
           <div>
             <h3 className="text-2xl font-black text-textMain mb-6 flex items-center">
