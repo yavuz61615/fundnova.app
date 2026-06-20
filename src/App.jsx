@@ -455,6 +455,7 @@ export default function HybridFundPlatform() {
               { id: 'charity', label: t('nav.charity') },
               { id: 'exchange', label: t('nav.exchange') },
               { id: 'risk', label: 'Risk Sınıfları' },
+              { id: 'support', label: 'Teknik Destek' },
             ].map(tab => (
               <button
                 key={tab.id}
@@ -934,8 +935,9 @@ export default function HybridFundPlatform() {
           )}
         </div>
 
-        {/* Blokzincir Cüzdanım ve Sertifikalarım */}
-        <div className="mb-12 animate-in fade-in slide-in-from-bottom-4">
+        {/* Blokzincir Cüzdanım ve Sertifikalarım / Gelen Fonlar */}
+        {userProfile !== 'ngo' ? (
+          <div className="mb-12 animate-in fade-in slide-in-from-bottom-4">
           <h3 className="text-2xl font-black text-textMain mb-6 flex items-center">
             <Wallet className="w-6 h-6 mr-3 text-primary" /> Blokzincir Cüzdanım
           </h3>
@@ -984,7 +986,44 @@ export default function HybridFundPlatform() {
               </div>
             </div>
           </div>
-        </div>
+        ) : (
+          <div className="mb-12 animate-in fade-in slide-in-from-bottom-4">
+            <h3 className="text-2xl font-black text-textMain mb-6 flex items-center">
+              <Activity className="w-6 h-6 mr-3 text-[#10b981]" /> Gelen Fonlar
+            </h3>
+            <div className="card bg-surface border border-borderBase">
+              <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 pb-6 border-b border-borderBase gap-4">
+                 <div>
+                    <span className="text-xs font-bold text-textMuted uppercase tracking-widest block mb-1">Toplam Toplanan Fon</span>
+                    <span className="text-3xl font-black text-[#10b981] font-mono">$125,450.00</span>
+                 </div>
+                 <div className="md:text-right">
+                    <span className="text-xs font-bold text-textMuted uppercase tracking-widest block mb-1">Aylık Büyüme</span>
+                    <span className="text-sm font-bold text-[#10b981] bg-[#10b981]/10 px-3 py-1 rounded-lg">+14.5%</span>
+                 </div>
+              </div>
+              <div>
+                <h4 className="text-lg font-bold text-textMain mb-4 flex items-center">
+                  <Heart className="w-5 h-5 mr-2 text-[#10b981]" /> Aktif Kampanyalar
+                </h4>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="bg-background border border-borderBase rounded-xl p-4 flex items-center justify-between hover:border-[#10b981] transition-colors">
+                     <div className="flex items-center">
+                        <div className="w-12 h-12 bg-[#10b981]/10 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                           <Heart className="w-6 h-6 text-[#10b981]" />
+                        </div>
+                        <div>
+                           <span className="text-sm font-bold text-textMain block line-clamp-1">Gazze Temiz Su Arıtma Projesi</span>
+                           <span className="text-xs text-textMuted">%85 Tamamlandı • $12,000 Bekliyor</span>
+                        </div>
+                     </div>
+                     <button className="text-[#10b981] hover:text-[#10b981]/80 text-sm font-bold bg-[#10b981]/10 px-3 py-1.5 rounded-lg flex-shrink-0 ml-2">Detay</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
 
         {!isCorpOrNgo ? (
           <div>
