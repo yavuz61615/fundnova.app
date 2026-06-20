@@ -776,13 +776,17 @@ export default function HybridFundPlatform() {
                     <div className="absolute inset-0 bg-primary/20 blur-xl rounded-full animate-pulse"></div>
                     <div className="w-20 h-20 bg-surface border-2 border-primary/50 rounded-full flex items-center justify-center relative z-10 animate-[spin_3s_linear_infinite]">
                       <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center animate-[spin_3s_linear_infinite_reverse]">
-                        <Wallet className="w-8 h-8 text-primary animate-pulse" />
+                        {role === 'ngo' ? <Heart className="w-8 h-8 text-primary animate-pulse" /> : <Wallet className="w-8 h-8 text-primary animate-pulse" />}
                       </div>
                     </div>
                   </div>
-                  <h3 className="text-2xl font-black text-textMain mb-4">Web3 Cüzdanınız Oluşturuluyor</h3>
+                  <h3 className="text-2xl font-black text-textMain mb-4">
+                    {role === 'ngo' ? 'Hesabınız Oluşturuluyor' : 'Web3 Cüzdanınız Oluşturuluyor'}
+                  </h3>
                   <p className="text-textMuted max-w-sm mx-auto leading-relaxed">
-                    Akıllı sertifikalarınızı ve hisselerinizi güvenle saklayabilmeniz için kişisel blokzincir cüzdanınız (Account Abstraction) arka planda otomatik olarak oluşturuluyor... Lütfen bekleyin.
+                    {role === 'ngo' 
+                      ? 'Platforma erişiminiz sağlanıyor. Hesabınız arka planda otomatik olarak oluşturuluyor... Lütfen bekleyin.' 
+                      : 'Akıllı sertifikalarınızı ve hisselerinizi güvenle saklayabilmeniz için kişisel blokzincir cüzdanınız (Account Abstraction) arka planda otomatik olarak oluşturuluyor... Lütfen bekleyin.'}
                   </p>
                 </>
               ) : (
@@ -790,22 +794,26 @@ export default function HybridFundPlatform() {
                   <div className="w-20 h-20 bg-[#10b981]/20 rounded-full flex items-center justify-center mx-auto mb-6">
                     <CheckCircle className="w-10 h-10 text-[#10b981]" />
                   </div>
-                  <h3 className="text-2xl font-black text-[#10b981] mb-2">Cüzdanınız Hazır!</h3>
+                  <h3 className="text-2xl font-black text-[#10b981] mb-2">
+                    {role === 'ngo' ? 'Hesabınız Hazır!' : 'Cüzdanınız Hazır!'}
+                  </h3>
                   <p className="text-textMuted">Dashboard'a yönlendiriliyorsunuz...</p>
                 </div>
               )}
             </div>
           ) : (
             <>
-              <div className="bg-primary/10 border border-primary/20 rounded-xl p-5 mb-8 flex items-start animate-in fade-in slide-in-from-top-4">
-                <Wallet className="w-6 h-6 text-primary flex-shrink-0 mr-3 mt-0.5 animate-pulse" />
-                <div>
-                  <h4 className="text-sm font-bold text-textMain mb-1">Web3 Altyapısı ile Tam Şeffaflık</h4>
-                  <p className="text-xs text-textMuted leading-relaxed">
-                    Kayıt işlemini tamamladığınızda adınıza otomatik olarak güvenli bir <strong>Blokzincir Cüzdanı (Account Abstraction)</strong> oluşturulacaktır. Tüm yatırımlarınız, akıllı sertifikalarınız ve hisseleriniz %100 şeffaflıkla bu cüzdanda saklanacak ve ikincil piyasa işlemleri buradan yapılacaktır.
-                  </p>
+              {role !== 'ngo' && (
+                <div className="bg-primary/10 border border-primary/20 rounded-xl p-5 mb-8 flex items-start animate-in fade-in slide-in-from-top-4">
+                  <Wallet className="w-6 h-6 text-primary flex-shrink-0 mr-3 mt-0.5 animate-pulse" />
+                  <div>
+                    <h4 className="text-sm font-bold text-textMain mb-1">Web3 Altyapısı ile Tam Şeffaflık</h4>
+                    <p className="text-xs text-textMuted leading-relaxed">
+                      Kayıt işlemini tamamladığınızda adınıza otomatik olarak güvenli bir <strong>Blokzincir Cüzdanı (Account Abstraction)</strong> oluşturulacaktır. Tüm yatırımlarınız, akıllı sertifikalarınız ve hisseleriniz %100 şeffaflıkla bu cüzdanda saklanacak ve ikincil piyasa işlemleri buradan yapılacaktır.
+                    </p>
+                  </div>
                 </div>
-              </div>
+              )}
 
               {step === 1 && (
                 <div>
