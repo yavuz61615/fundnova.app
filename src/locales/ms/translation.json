@@ -4,8 +4,8 @@
         "market": "Pasaran Sekunder",
         "about": "Tentang Kami",
         "register": "Daftar",
-        "risk": "Risk Classes",
-        "support": "Technical Support"
+        "risk": "Kelas Risiko",
+        "support": "Sokongan Teknikal"
     },
     "explore": {
         "title": "Teroka Projek",
@@ -28,7 +28,9 @@
         "analysis_3": "Tiada pulangan kewangan. Skor Impak Sosial 100%. Penggunaan belanjawan yang telus sepenuhnya dan pelaporan foto segera.",
         "desc_4": "Penciptaan kumpulan kredit mikro jangka pendek untuk PKS. Bayaran bulanan tetap dijamin.",
         "analysis_4": "Pengagihan risiko berasaskan luas. Pengurusan lalai automatik dengan algoritma platform. Anggaran hasil antara 15-20% setiap tahun.",
-        "no_projects": "There are no projects in this category yet."
+        "no_projects": "Matlamat:",
+        "target_label": "Matlamat:",
+        "karz_btn": "Buat Karz-i Hasen"
     },
     "market": {
         "title": "Pasaran Sekunder (Bursa)",
@@ -76,12 +78,12 @@
         "p2": "Matlamat kami adalah untuk menyediakan pelabur dengan pasaran sekunder yang telus dan mematuhi peraturan pasaran spot; di samping mewujudkan kumpulan derma yang tidak terganggu untuk projek sosial. Kami membina model kewangan masa depan dengan menggabungkan model hutang, ekuiti, dan derma di bawah satu bumbung."
     },
     "dashboard": {
-        "myWallet": "My Blockchain Wallet",
-        "walletAddress": "Smart Wallet Address (Account Abstraction)",
-        "myCertificates": "My Certificates",
-        "sukukType": "Istisna Sukuk • 10 Units",
-        "equityType": "Equity-Based • 5 Lots",
-        "review": "Review"
+        "myWallet": "Dompet Blockchain Saya",
+        "walletAddress": "Alamat Wallet Pintar",
+        "myCertificates": "Sukuk Pengecualian • 10 Unit",
+        "sukukType": "Berasaskan Saham • 5 Lot",
+        "equityType": "Semakan",
+        "review": "Tiada projek dalam kategori ini lagi."
     },
     "support": {
         "desc": "How can we help you? Please fill out the form completely.",
@@ -97,5 +99,73 @@
         "messagePlaceholder": "Please explain your issue in detail...",
         "submit": "Submit Support Request",
         "success": "Your request has been successfully received."
+    },
+    "proj": {
+        "solar_title": "Pembersihan Air Mudah Alih Berkuasa Suria",
+        "solar_desc": "Pemasangan dan penyepaduan kemudahan rawatan air mudah alih berkapasiti tinggi dan berkuasa solar sepenuhnya, dibangunkan sebagai alternatif kepada rangkaian air yang musnah di Gaza.",
+        "logi_title": "Pertumbuhan Armada Logistik Teluk",
+        "logi_desc": "Membiayai pembelian 50 kenderaan komersial generasi baharu dengan enjin hibrid mesra alam melalui kaedah Sukuk Ijara, bagi menyokong operasi logistik e-dagang yang berkembang pesat di rantau Teluk.",
+        "green_title": "Pembelian Peralatan Panel Suria",
+        "green_desc": "Membekalkan pembiayaan panel solar monohabluran berkecekapan tinggi dan peralatan penyongsang untuk digunakan dalam projek loji tenaga solar generasi baharu dengan kapasiti 50 MW yang akan dibina di Afrika Utara.",
+        "elamel_title": "Pengeluaran Perumahan Prefabrikasi Kecemasan Gaza",
+        "elamel_desc": "Perolehan bahan mentah asas dan bahan binaan yang diperlukan untuk pengeluaran pantas ruang kediaman pasang siap modular penebat haba yang tahan kepada keadaan iklim yang keras, bagi memenuhi keperluan tempat perlindungan mendesak orang awam yang tiada tempat tinggal di Gaza.",
+        "bina_title": "Rangkaian Dron Pengesanan Kerosakan Bina-AI",
+        "bina_desc": "Membangunkan dan menempatkan armada kenderaan udara tanpa pemandu (dron) autonomi sepenuhnya yang mampu melakukan pemetaan 3D yang disokong kecerdasan buatan, pengesanan kerosakan struktur dan analisis serpihan untuk mempercepatkan pembinaan semula bangunan yang musnah di zon bencana dan perang.",
+        "paytech_title": "Dompet Islam PayTech",
+        "paytech_desc": "Pelancaran global bagi aplikasi perbelanjaan pintar dan dompet digital yang inovatif yang memenuhi keperluan kewangan Generasi Z, disokong oleh infrastruktur blockchain, tidak mempunyai faedah, algoritma pelaburan beretika dan disepadukan sepenuhnya dengan sistem pembayaran global.",
+        "gazatech_title": "Kesihatan Mudah Alih GazaTech",
+        "gazatech_desc": "Projek Penulenan Air Bersih Gaza",
+        "water_title": "Projek Penulenan Air Bersih Gaza",
+        "water_desc": "Pemasangan segera unit penulenan air mudah alih bersepadu yang mudah diselenggara dan berkuasa solar 100% yang akan memenuhi keperluan air bersih harian 10,000 orang di kem pelarian di Gaza, di mana infrastruktur air minuman telah runtuh sepenuhnya akibat perang, dan menampung kos operasi 1 tahun.",
+        "edu_title": "Khemah Pendidikan Kanak-Kanak Palestin",
+        "edu_desc": "Mendirikan 50 khemah pendidikan berkapasiti penuh, tahan terhadap keadaan cuaca buruk, diterangi dengan panel solar, dilengkapi dengan alat tulis asas dan bahan pendidikan digital, dan menyediakan dana sokongan guru bagi memastikan kanak-kanak tidak ketinggalan dalam pendidikan di kawasan di mana sekolah musnah akibat serangan itu.",
+        "health_title": "Penempatan 10 poliklinik kontena mudah alih yang serba lengkap dengan penjana dan unit pensterilan, di mana campur tangan pembedahan asas boleh dilakukan, di titik strategik di zon konflik di mana hospital sedia ada tidak dapat digunakan, dan penyediaan bahan perubatan kecemasan.",
+        "health_desc": "Penempatan 10 poliklinik kontena mudah alih yang serba lengkap dengan penjana dan unit pensterilan, di mana campur tangan pembedahan asas boleh dilakukan, di titik strategik di zon konflik di mana hospital sedia ada tidak dapat digunakan, dan penyediaan bahan perubatan kecemasan.",
+        "psy_title": "Pusat Sokongan Psikososial untuk Kanak-kanak",
+        "psy_desc": "Pembinaan dan pengendalian pusat sokongan psikososial kekal yang akan menyediakan rawatan gangguan tekanan pasca trauma jangka panjang, bengkel terapi seni dan taman permainan selamat dengan pakar psikiatri kanak-kanak dan pedagogi untuk beribu-ribu anak yatim yang telah terdedah kepada kesan perang yang dahsyat."
+    },
+    "risk": {
+        "title": "Klasifikasi Risiko",
+        "desc": "Semua projek yang disenaraikan di platform FundNova diperiksa mengikut piawaian pengauditan bebas antarabangsa dan diklasifikasikan kepada tiga kategori utama: A, B dan C untuk menyediakan pelabur dengan profil risiko yang telus.",
+        "a_title": "Risiko Rendah",
+        "a_subtitle": "Pulangan Tetap, Kepercayaan Tinggi",
+        "a_desc": "Ini adalah projek yang dieksport oleh syarikat yang mantap dengan kunci kira-kira yang kukuh atau dijamin oleh aset fizikal (hartanah, peralatan, dll.).",
+        "b_title": "Risiko Sederhana",
+        "b_subtitle": "Pertumbuhan Seimbang dan Dividen",
+        "b_desc": "Ini adalah pembiayaan pengembangan untuk syarikat dalam fasa pertumbuhan atau permulaan yang telah mencapai bahagian pasaran tertentu.",
+        "c_title": "Berisiko Tinggi",
+        "c_subtitle": "Potensi Pertumbuhan Maksimum",
+        "c_desc": "Ia termasuk pemula teknologi pada peringkat benih atau Siri A, projek dengan potensi tinggi tetapi kesesuaian pasaran produk yang baru terbukti."
+    },
+    "badge": {
+        "sadaka": "Sadaka-i Cariye",
+        "zekat": "Sesuai untuk Zakat",
+        "health": "Bantuan Kesihatan",
+        "edu": "Tabung Pendidikan"
+    },
+    "type": {
+        "istisna": "Sukuk Pengecualian",
+        "icara": "Ijara Sukuk",
+        "emtia": "Murabah Komoditi",
+        "murabaha": "Murabahah",
+        "proptech": "PropTech/AI",
+        "fintech": "FinTech / Generasi Z",
+        "healthtech": "LogiSpeed ​​​​Inc."
+    },
+    "company": {
+        "gaza": "LogiSpeed ​​​​Inc.",
+        "logi": "LogiSpeed ​​​​Inc.",
+        "green": "GreenEnergy Ltd.",
+        "elamel": "Pembinaan El-Amel",
+        "seria": "Siri A",
+        "tohum": "Pelaburan Benih",
+        "umut": "Persatuan Matahari Harapan Gaza",
+        "kudus": "Koperasi Pembinaan Semula dan Pendidikan Baitulmaqdis",
+        "filistin": "Persatuan Profesional Penjagaan Kesihatan Bebas Palestin",
+        "yetim": "Yayasan Solidariti Anak Yatim Gaza"
+    },
+    "chart": {
+        "growth": "Pengganda Sasaran",
+        "target_multiplier": "Pengganda Sasaran"
     }
 }

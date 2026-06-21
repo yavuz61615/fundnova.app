@@ -1043,7 +1043,7 @@ export default function HybridFundPlatform() {
                 <div>
                   <div className="flex justify-between items-end mb-2">
                     <div>
-                      <h4 className="font-bold text-textMain text-lg">Filistin Çocukları Eğitim Çadırları</h4>
+                      <h4 className="font-bold text-textMain text-lg">{t("proj.edu_title", "Filistin Çocukları Eğitim Çadırları")}</h4>
                       <p className="text-xs text-textMuted">Hedef: $50,000</p>
                     </div>
                     <div className="text-right">
@@ -1148,7 +1148,7 @@ export default function HybridFundPlatform() {
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {userProfile === 'micro' ? (
                   <div className="card border-l-4 border-l-[#10b981] bg-surface shadow-sm">
-                    <h4 className="font-bold text-textMain text-lg mb-2">Filistin Çocukları Eğitim Çadırları</h4>
+                    <h4 className="font-bold text-textMain text-lg mb-2">{t("proj.edu_title", "Filistin Çocukları Eğitim Çadırları")}</h4>
                     <p className="text-textMuted text-sm mb-4">Risk: Çok Düşük | Minimum: $10</p>
                     <button onClick={() => setActiveTab('charity')} className="w-full btn-ghost text-sm py-2 text-[#10b981] border-[#10b981]">İncele</button>
                   </div>
@@ -1170,10 +1170,10 @@ export default function HybridFundPlatform() {
   /* ── DEBT TAB ── */
   const DebtTab = () => {
     const projects = [
-      { id: 4, company: "Gaza Altyapı A.Ş.", title: "Güneş Enerjili Mobil Su Arıtma", desc: "Gazze'de tahrip olan su şebekesine alternatif olarak geliştirilen, yüksek kapasiteli ve tamamen güneş enerjisi ile çalışan mobil su arıtma tesislerinin bölgeye kurulumu ve entegrasyonu.", returnRate: 13.0, risk: "B-", raised: 120000, target: 150000, type: "İstisna Sukuk", image: "https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?q=80&w=1472" },
-      { id: 1, company: "LogiSpeed A.Ş.", title: "Körfez Lojistik Filo Büyümesi", desc: "Körfez bölgesinde hızla genişleyen e-ticaret lojistiği operasyonlarını desteklemek amacıyla, çevre dostu hibrit motora sahip 50 adet yeni nesil ticari araç alımının İcara Sukuk yöntemiyle finansmanı.", returnRate: 14.5, risk: "A-", raised: 125000, target: 150000, type: "İcara Sukuk", image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=1470" },
-      { id: 2, company: "GreenEnergy Ltd.", title: "Güneş Paneli Ekipman Alımı", desc: "Kuzey Afrika'da inşa edilecek 50 MW kapasiteli yeni nesil güneş enerjisi santrali projesinde kullanılacak, yüksek verimliliğe sahip monokristal güneş panelleri ve invertör ekipmanlarının tedarik finansmanı.", returnRate: 16.0, risk: "B+", raised: 45000, target: 100000, type: "Emtia Murabaha", image: "https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=1472" },
-      { id: 3, company: "El-Amel İnşaat", title: "Gazze Acil Prefabrik Konut Üretimi", desc: "Gazze'de evsiz kalan sivillerin acil barınma ihtiyacını karşılamak üzere, zorlu iklim koşullarına dayanıklı, ısı yalıtımlı modüler prefabrik yaşam alanlarının hızlı üretimi için gerekli temel hammadde ve inşaat malzemesi alımı.", returnRate: 11.5, risk: "B", raised: 85000, target: 200000, type: "Murabaha", image: "https://images.unsplash.com/photo-1541888086925-920a0b672727?q=80&w=1470" }
+      { id: 4, company: t("company.gaza", "Gaza Altyapı A.Ş."), title: t("proj.solar_title", "Güneş Enerjili Mobil Su Arıtma"), desc: t("proj.solar_desc", "Gazze'de tahrip olan su şebekesine alternatif olarak geliştirilen, yüksek kapasiteli ve tamamen güneş enerjisi ile çalışan mobil su arıtma tesislerinin bölgeye kurulumu ve entegrasyonu."), returnRate: 13.0, risk: "B-", raised: 120000, target: 150000, type: t("type.istisna", "İstisna Sukuk"), image: "https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?q=80&w=1472" },
+      { id: 1, company: t("company.logi", "LogiSpeed A.Ş."), title: t("proj.logi_title", "Körfez Lojistik Filo Büyümesi"), desc: t("proj.logi_desc", "Körfez bölgesinde hızla genişleyen e-ticaret lojistiği operasyonlarını desteklemek amacıyla, çevre dostu hibrit motora sahip 50 adet yeni nesil ticari araç alımının İcara Sukuk yöntemiyle finansmanı."), returnRate: 14.5, risk: "A-", raised: 125000, target: 150000, type: t("type.icara", "İcara Sukuk"), image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=1470" },
+      { id: 2, company: t("company.green", "GreenEnergy Ltd."), title: t("proj.green_title", "Güneş Paneli Ekipman Alımı"), desc: t("proj.green_desc", "Kuzey Afrika'da inşa edilecek 50 MW kapasiteli yeni nesil güneş enerjisi santrali projesinde kullanılacak, yüksek verimliliğe sahip monokristal güneş panelleri ve invertör ekipmanlarının tedarik finansmanı."), returnRate: 16.0, risk: "B+", raised: 45000, target: 100000, type: t("type.emtia", "Emtia Murabaha"), image: "https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=1472" },
+      { id: 3, company: t("company.elamel", "El-Amel İnşaat"), title: t("proj.elamel_title", "Gazze Acil Prefabrik Konut Üretimi"), desc: t("proj.elamel_desc", "Gazze'de evsiz kalan sivillerin acil barınma ihtiyacını karşılamak üzere, zorlu iklim koşullarına dayanıklı, ısı yalıtımlı modüler prefabrik yaşam alanlarının hızlı üretimi için gerekli temel hammadde ve inşaat malzemesi alımı."), returnRate: 11.5, risk: "B", raised: 85000, target: 200000, type: t("type.murabaha", "Murabaha"), image: "https://images.unsplash.com/photo-1541888086925-920a0b672727?q=80&w=1470" }
     ];
 
     return (
@@ -1223,9 +1223,9 @@ export default function HybridFundPlatform() {
   /* ── EQUITY TAB ── */
   const EquityTab = () => {
     const projects = [
-      { id: 3, company: "Seri A", title: "Bina-AI Hasar Tespit Drone Ağı", desc: "Afet ve savaş bölgelerinde yıkılan binaların yeniden inşasını hızlandırmak amacıyla, yapay zeka destekli 3D haritalama, yapısal hasar tespiti ve enkaz analizi yapabilen tam otonom insansız hava aracı (drone) filosunun geliştirilmesi ve sahaya sürülmesi.", valuation: 8000000, risk: "C+", raised: 420000, target: 600000, type: "PropTech / AI", image: "https://images.unsplash.com/photo-1508614589041-895b88991e3e?q=80&w=1470", isEquity: true, sharePrice: 25, chartPath: "M0,30 Q15,30 30,25 T60,15 T100,0", multiplier: "2.8x" },
-      { id: 1, company: "Seri A", title: "PayTech İslami Cüzdan", desc: "Z kuşağının finansal ihtiyaçlarına yönelik, blokzincir altyapısı ile desteklenen, sıfır faizli, etik yatırım algoritmaları barındıran ve global ödeme sistemleriyle tam entegre çalışan yenilikçi akıllı harcama ve dijital cüzdan uygulamasının küresel lansmanı.", valuation: 5000000, risk: "C+", raised: 820000, target: 1062500, type: "FinTech / Z Kuşağı", image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=1370", isEquity: true, sharePrice: 50, chartPath: "M0,30 Q25,25 40,20 T75,10 T100,0", multiplier: "3.5x" },
-      { id: 2, company: "Tohum Yatırımı", title: "GazaTech Mobil Sağlık", desc: "Kriz bölgelerindeki yerel sağlık personeli ile dünya çapındaki uzman doktorları eş zamanlı olarak bir araya getiren, düşük internet bant genişliğinde dahi yüksek çözünürlüklü görüntü aktarımı yapabilen ve medikal AI teşhis asistanı barındıran uçtan uca şifreli tele-tıp platformu.", valuation: 2000000, risk: "C", raised: 150000, target: 500000, type: "HealthTech / Gazze", image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=1470", isEquity: true, sharePrice: 15, chartPath: "M0,30 C30,20 40,28 60,15 S80,5 100,0", multiplier: "5.0x" }
+      { id: 3, company: t("company.seria", "Seri A"), title: t("proj.bina_title", "Bina-AI Hasar Tespit Drone Ağı"), desc: t("proj.bina_desc", "Afet ve savaş bölgelerinde yıkılan binaların yeniden inşasını hızlandırmak amacıyla, yapay zeka destekli 3D haritalama, yapısal hasar tespiti ve enkaz analizi yapabilen tam otonom insansız hava aracı (drone) filosunun geliştirilmesi ve sahaya sürülmesi."), valuation: 8000000, risk: "C+", raised: 420000, target: 600000, type: t("type.proptech", "PropTech / AI"), image: "https://images.unsplash.com/photo-1508614589041-895b88991e3e?q=80&w=1470", isEquity: true, sharePrice: 25, chartPath: "M0,30 Q15,30 30,25 T60,15 T100,0", multiplier: "2.8x" },
+      { id: 1, company: t("company.seria", "Seri A"), title: t("proj.paytech_title", "PayTech İslami Cüzdan"), desc: t("proj.paytech_desc", "Z kuşağının finansal ihtiyaçlarına yönelik, blokzincir altyapısı ile desteklenen, sıfır faizli, etik yatırım algoritmaları barındıran ve global ödeme sistemleriyle tam entegre çalışan yenilikçi akıllı harcama ve dijital cüzdan uygulamasının küresel lansmanı."), valuation: 5000000, risk: "C+", raised: 820000, target: 1062500, type: t("type.fintech", "FinTech / Z Kuşağı"), image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=1370", isEquity: true, sharePrice: 50, chartPath: "M0,30 Q25,25 40,20 T75,10 T100,0", multiplier: "3.5x" },
+      { id: 2, company: t("company.tohum", "Tohum Yatırımı"), title: t("proj.gazatech_title", "GazaTech Mobil Sağlık"), desc: t("proj.gazatech_desc", "Kriz bölgelerindeki yerel sağlık personeli ile dünya çapındaki uzman doktorları eş zamanlı olarak bir araya getiren, düşük internet bant genişliğinde dahi yüksek çözünürlüklü görüntü aktarımı yapabilen ve medikal AI teşhis asistanı barındıran uçtan uca şifreli tele-tıp platformu."), valuation: 2000000, risk: "C", raised: 150000, target: 500000, type: t("type.healthtech", "HealthTech / Gazze"), image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=1470", isEquity: true, sharePrice: 15, chartPath: "M0,30 C30,20 40,28 60,15 S80,5 100,0", multiplier: "5.0x" }
     ];
 
     return (
@@ -1251,7 +1251,7 @@ export default function HybridFundPlatform() {
                 {/* Illustrative Graphic (Mini Chart) */}
                 <div className="mb-8 bg-background rounded-xl border border-borderBase p-4 flex items-center gap-4">
                   <div className="flex-1">
-                    <span className="text-xs font-bold text-textMuted uppercase mb-2 block">Büyüme Projeksiyonu (5 Yıl)</span>
+                    <span className="text-xs font-bold text-textMuted uppercase mb-2 block">{t("chart.growth", "Büyüme Projeksiyonu (5 Yıl)")}</span>
                     <svg className="w-full h-12 overflow-visible" viewBox="0 0 100 30" preserveAspectRatio="none">
                       <defs>
                         <linearGradient id={`grad-eq-${project.id}`} x1="0" y1="0" x2="0" y2="1">
@@ -1264,7 +1264,7 @@ export default function HybridFundPlatform() {
                     </svg>
                   </div>
                   <div className="text-right flex flex-col justify-center pl-4 border-l border-borderBase">
-                    <span className="text-[10px] text-textMuted font-bold uppercase tracking-wider mb-1">Hedef Çarpan</span>
+                    <span className="text-[10px] text-textMuted font-bold uppercase tracking-wider mb-1">{t("chart.target_multiplier", "Hedef Çarpan")}</span>
                     <span className="text-2xl font-black text-accent">{project.multiplier}</span>
                   </div>
                 </div>
@@ -1310,9 +1310,9 @@ export default function HybridFundPlatform() {
             </div>
           </div>
           <div className="p-8 flex-1 flex flex-col bg-surface">
-            <span className="text-xs font-bold uppercase tracking-widest text-textMuted mb-2 block">Gazze Umut Güneşi Derneği</span>
-            <h3 className="text-2xl font-black text-textMain leading-tight mb-4">Gazze Temiz Su Arıtma Projesi</h3>
-            <p className="text-textMuted mb-8 flex-1 leading-relaxed">Savaş nedeniyle içme suyu altyapısı tamamen çöken Gazze'deki mülteci kamplarında, günlük 10.000 kişinin temiz su ihtiyacını karşılayacak, bakımı kolay ve %100 güneş enerjisiyle çalışan entegre mobil su arıtma ünitelerinin acil kurulumu ve 1 yıllık işletme maliyetinin karşılanması.</p>
+            <span className="text-xs font-bold uppercase tracking-widest text-textMuted mb-2 block">{t("company.umut", "Gazze Umut Güneşi Derneği")}</span>
+            <h3 className="text-2xl font-black text-textMain leading-tight mb-4">{t("proj.water_title", "Gazze Temiz Su Arıtma Projesi")}</h3>
+            <p className="text-textMuted mb-8 flex-1 leading-relaxed">{t("proj.water_desc", "Savaş nedeniyle içme suyu altyapısı tamamen çöken Gazze'deki mülteci kamplarında, günlük 10.000 kişinin temiz su ihtiyacını karşılayacak, bakımı kolay ve %100 güneş enerjisiyle çalışan entegre mobil su arıtma ünitelerinin acil kurulumu ve 1 yıllık işletme maliyetinin karşılanması.")}</p>
             <button onClick={() => setActiveProject({ id: 'c1', company: 'Gazze Umut Güneşi Derneği', title: 'Gazze Temiz Su Arıtma Projesi', desc: 'Savaş nedeniyle içme suyu altyapısı tamamen çöken Gazze\'deki mülteci kamplarında, günlük 10.000 kişinin temiz su ihtiyacını karşılayacak, bakımı kolay ve %100 güneş enerjisiyle çalışan entegre mobil su arıtma ünitelerinin acil kurulumu ve 1 yıllık işletme maliyetinin karşılanması.', isCharity: true })} className="w-full btn-ghost border-[#10b981] text-[#10b981] hover:bg-[#10b981]/10 mt-auto">
               <HeartHandshake className="w-5 h-5 mr-2" /> {t('common.donate')}
             </button>
@@ -1327,10 +1327,10 @@ export default function HybridFundPlatform() {
             </div>
           </div>
           <div className="p-8 flex-1 flex flex-col bg-surface">
-            <span className="text-xs font-bold uppercase tracking-widest text-textMuted mb-2 block">Kudüs İmar ve Eğitim Kooperatifi</span>
-            <h3 className="text-2xl font-black text-textMain leading-tight mb-4">Filistin Çocukları Eğitim Çadırları</h3>
-            <p className="text-textMuted mb-8 flex-1 leading-relaxed">Saldırılar sonucu okulları yıkılan bölgelerde çocukların eğitimden geri kalmaması amacıyla, zorlu hava koşullarına dayanıklı, güneş panelleriyle aydınlatılan, temel kırtasiye ve dijital eğitim materyalleriyle donatılmış 50 adet tam kapasiteli eğitim çadırının kurulması ve öğretmen destek fonunun sağlanması.</p>
-            <button onClick={() => setActiveProject({ id: 'c2', company: 'Kudüs İmar ve Eğitim Kooperatifi', title: 'Filistin Çocukları Eğitim Çadırları', desc: 'Saldırılar sonucu okulları yıkılan bölgelerde çocukların eğitimden geri kalmaması amacıyla, zorlu hava koşullarına dayanıklı, güneş panelleriyle aydınlatılan, temel kırtasiye ve dijital eğitim materyalleriyle donatılmış 50 adet tam kapasiteli eğitim çadırının kurulması ve öğretmen destek fonunun sağlanması.', isCharity: true })} className="w-full btn-ghost border-[#f59e0b] text-[#f59e0b] hover:bg-[#f59e0b]/10 mt-auto">
+            <span className="text-xs font-bold uppercase tracking-widest text-textMuted mb-2 block">{t("company.kudus", "Kudüs İmar ve Eğitim Kooperatifi")}</span>
+            <h3 className="text-2xl font-black text-textMain leading-tight mb-4">{t("proj.edu_title", "Filistin Çocukları Eğitim Çadırları")}</h3>
+            <p className="text-textMuted mb-8 flex-1 leading-relaxed">{t("proj.edu_desc", "Saldırılar sonucu okulları yıkılan bölgelerde çocukların eğitimden geri kalmaması amacıyla, zorlu hava koşullarına dayanıklı, güneş panelleriyle aydınlatılan, temel kırtasiye ve dijital eğitim materyalleriyle donatılmış 50 adet tam kapasiteli eğitim çadırının kurulması ve öğretmen destek fonunun sağlanması.")}</p>
+            <button onClick={() => setActiveProject({ id: 'c2', company: 'Kudüs İmar ve Eğitim Kooperatifi', title: 'Filistin Çocukları Eğitim Çadırları', desc: '{t("proj.edu_desc", "Saldırılar sonucu okulları yıkılan bölgelerde çocukların eğitimden geri kalmaması amacıyla, zorlu hava koşullarına dayanıklı, güneş panelleriyle aydınlatılan, temel kırtasiye ve dijital eğitim materyalleriyle donatılmış 50 adet tam kapasiteli eğitim çadırının kurulması ve öğretmen destek fonunun sağlanması.")}', isCharity: true })} className="w-full btn-ghost border-[#f59e0b] text-[#f59e0b] hover:bg-[#f59e0b]/10 mt-auto">
               <HeartHandshake className="w-5 h-5 mr-2" /> {t('common.donate')}
             </button>
           </div>
@@ -1344,10 +1344,10 @@ export default function HybridFundPlatform() {
             </div>
           </div>
           <div className="p-8 flex-1 flex flex-col bg-surface">
-            <span className="text-xs font-bold uppercase tracking-widest text-textMuted mb-2 block">Filistin Bağımsız Sağlıkçılar Derneği</span>
-            <h3 className="text-2xl font-black text-textMain leading-tight mb-4">Konteyner Poliklinik Ağı</h3>
-            <p className="text-textMuted mb-8 flex-1 leading-relaxed">Mevcut hastanelerin kullanılamaz hale geldiği çatışma bölgelerinde, temel cerrahi müdahalelerin yapılabildiği, jeneratörlü ve sterilizasyon üniteli tam donanımlı 10 adet mobil konteyner polikliniğin stratejik noktalara yerleştirilmesi ve acil tıbbi sarf malzemelerinin temini.</p>
-            <button onClick={() => setActiveProject({ id: 'c3', company: 'Filistin Bağımsız Sağlıkçılar Derneği', title: 'Konteyner Poliklinik Ağı', desc: 'Mevcut hastanelerin kullanılamaz hale geldiği çatışma bölgelerinde, temel cerrahi müdahalelerin yapılabildiği, jeneratörlü ve sterilizasyon üniteli tam donanımlı 10 adet mobil konteyner polikliniğin stratejik noktalara yerleştirilmesi ve acil tıbbi sarf malzemelerinin temini.', isCharity: true })} className="w-full btn-ghost border-[#38bdf8] text-[#38bdf8] hover:bg-[#38bdf8]/10 mt-auto">
+            <span className="text-xs font-bold uppercase tracking-widest text-textMuted mb-2 block">{t("company.filistin", "Filistin Bağımsız Sağlıkçılar Derneği")}</span>
+            <h3 className="text-2xl font-black text-textMain leading-tight mb-4">{t("proj.health_title", "Konteyner Poliklinik Ağı")}</h3>
+            <p className="text-textMuted mb-8 flex-1 leading-relaxed">{t("proj.health_desc", "Mevcut hastanelerin kullanılamaz hale geldiği çatışma bölgelerinde, temel cerrahi müdahalelerin yapılabildiği, jeneratörlü ve sterilizasyon üniteli tam donanımlı 10 adet mobil konteyner polikliniğin stratejik noktalara yerleştirilmesi ve acil tıbbi sarf malzemelerinin temini.")}</p>
+            <button onClick={() => setActiveProject({ id: 'c3', company: 'Filistin Bağımsız Sağlıkçılar Derneği', title: 'Konteyner Poliklinik Ağı', desc: '{t("proj.health_desc", "Mevcut hastanelerin kullanılamaz hale geldiği çatışma bölgelerinde, temel cerrahi müdahalelerin yapılabildiği, jeneratörlü ve sterilizasyon üniteli tam donanımlı 10 adet mobil konteyner polikliniğin stratejik noktalara yerleştirilmesi ve acil tıbbi sarf malzemelerinin temini.")}', isCharity: true })} className="w-full btn-ghost border-[#38bdf8] text-[#38bdf8] hover:bg-[#38bdf8]/10 mt-auto">
               <HeartHandshake className="w-5 h-5 mr-2" /> {t('common.donate')}
             </button>
           </div>
@@ -1361,10 +1361,10 @@ export default function HybridFundPlatform() {
             </div>
           </div>
           <div className="p-8 flex-1 flex flex-col bg-surface">
-            <span className="text-xs font-bold uppercase tracking-widest text-textMuted mb-2 block">Gazze Yetim Dayanışma Vakfı</span>
-            <h3 className="text-2xl font-black text-textMain leading-tight mb-4">Çocuklar İçin Psikososyal Destek Merkezi</h3>
-            <p className="text-textMuted mb-8 flex-1 leading-relaxed">Savaşın yıkıcı etkilerine maruz kalmış binlerce yetim çocuğa yönelik, uzman çocuk psikiyatristleri ve pedagoglar eşliğinde uzun vadeli travma sonrası stres bozukluğu tedavisi, sanatla terapi atölyeleri ve güvenli oyun alanları sunacak kalıcı bir psikososyal destek merkezinin inşa edilmesi ve işletilmesi.</p>
-            <button onClick={() => setActiveProject({ id: 'c4', company: 'Gazze Yetim Dayanışma Vakfı', title: 'Çocuklar İçin Psikososyal Destek Merkezi', desc: 'Savaşın yıkıcı etkilerine maruz kalmış binlerce yetim çocuğa yönelik, uzman çocuk psikiyatristleri ve pedagoglar eşliğinde uzun vadeli travma sonrası stres bozukluğu tedavisi, sanatla terapi atölyeleri ve güvenli oyun alanları sunacak kalıcı bir psikososyal destek merkezinin inşa edilmesi ve işletilmesi.', isCharity: true })} className="w-full btn-ghost border-[#a855f7] text-[#a855f7] hover:bg-[#a855f7]/10 mt-auto">
+            <span className="text-xs font-bold uppercase tracking-widest text-textMuted mb-2 block">{t("company.yetim", "Gazze Yetim Dayanışma Vakfı")}</span>
+            <h3 className="text-2xl font-black text-textMain leading-tight mb-4">{t("proj.psy_title", "Çocuklar İçin Psikososyal Destek Merkezi")}</h3>
+            <p className="text-textMuted mb-8 flex-1 leading-relaxed">{t("proj.psy_desc", "Savaşın yıkıcı etkilerine maruz kalmış binlerce yetim çocuğa yönelik, uzman çocuk psikiyatristleri ve pedagoglar eşliğinde uzun vadeli travma sonrası stres bozukluğu tedavisi, sanatla terapi atölyeleri ve güvenli oyun alanları sunacak kalıcı bir psikososyal destek merkezinin inşa edilmesi ve işletilmesi.")}</p>
+            <button onClick={() => setActiveProject({ id: 'c4', company: 'Gazze Yetim Dayanışma Vakfı', title: 'Çocuklar İçin Psikososyal Destek Merkezi', desc: '{t("proj.psy_desc", "Savaşın yıkıcı etkilerine maruz kalmış binlerce yetim çocuğa yönelik, uzman çocuk psikiyatristleri ve pedagoglar eşliğinde uzun vadeli travma sonrası stres bozukluğu tedavisi, sanatla terapi atölyeleri ve güvenli oyun alanları sunacak kalıcı bir psikososyal destek merkezinin inşa edilmesi ve işletilmesi.")}', isCharity: true })} className="w-full btn-ghost border-[#a855f7] text-[#a855f7] hover:bg-[#a855f7]/10 mt-auto">
               <HeartHandshake className="w-5 h-5 mr-2" /> {t('common.donate')}
             </button>
           </div>
@@ -1379,9 +1379,9 @@ export default function HybridFundPlatform() {
       <div className="container py-16 animate-in fade-in slide-in-from-bottom-4 duration-500">
         <div className="mb-16 text-center max-w-3xl mx-auto">
           <ShieldCheck className="w-16 h-16 text-primary mx-auto mb-6" />
-          <h2 className="fluid-h2 font-black text-textMain mb-4">Risk Sınıflandırması</h2>
+          <h2 className="fluid-h2 font-black text-textMain mb-4">{t("risk.title", "Risk Sınıflandırması")}</h2>
           <p className="text-textMuted text-lg leading-relaxed">
-            FundNova platformunda listelenen tüm projeler, uluslararası bağımsız denetim standartlarına göre incelenir ve yatırımcılara şeffaf bir risk profili sunmak için A, B ve C olmak üzere üç ana kategoride sınıflandırılır.
+            {t("risk.desc", "FundNova platformunda listelenen tüm projeler, uluslararası bağımsız denetim standartlarına göre incelenir ve yatırımcılara şeffaf bir risk profili sunmak için A, B ve C olmak üzere üç ana kategoride sınıflandırılır.")}
           </p>
         </div>
 
@@ -1392,12 +1392,12 @@ export default function HybridFundPlatform() {
             <div className="flex items-center gap-4 mb-6">
               <div className="w-16 h-16 rounded-2xl bg-[#10b981]/10 flex items-center justify-center text-3xl font-black text-[#10b981] border border-[#10b981]/20">A</div>
               <div>
-                <h3 className="text-xl font-bold text-textMain">Düşük Risk</h3>
-                <span className="text-sm text-textMuted">Düzenli Getiri, Yüksek Güven</span>
+                <h3 className="text-xl font-bold text-textMain">{t("risk.a_title", "Düşük Risk")}</h3>
+                <span className="text-sm text-textMuted">{t("risk.a_subtitle", "Düzenli Getiri, Yüksek Güven")}</span>
               </div>
             </div>
             <p className="text-textMuted mb-6 leading-relaxed flex-1">
-              Güçlü bilançoya sahip, köklü firmaların ihraç ettiği veya fiziki varlık (gayrimenkul, ekipman vb.) teminatlı projelerdir.
+              {t("risk.a_desc", "Güçlü bilançoya sahip, köklü firmaların ihraç ettiği veya fiziki varlık (gayrimenkul, ekipman vb.) teminatlı projelerdir.")}
             </p>
             <ul className="space-y-3 mb-8">
               <li className="flex items-start text-sm text-textMain"><CheckCircle className="w-5 h-5 text-[#10b981] mr-3 shrink-0" /> Anapara kaybı ihtimali çok düşüktür.</li>
@@ -1417,7 +1417,7 @@ export default function HybridFundPlatform() {
             <div className="flex items-center gap-4 mb-6">
               <div className="w-16 h-16 rounded-2xl bg-[#f59e0b]/10 flex items-center justify-center text-3xl font-black text-[#f59e0b] border border-[#f59e0b]/20">B</div>
               <div>
-                <h3 className="text-xl font-bold text-textMain">Orta Risk</h3>
+                <h3 className="text-xl font-bold text-textMain">{t("risk.b_title", "Orta Risk")}</h3>
                 <span className="text-sm text-textMuted">Dengeli Risk & Getiri</span>
               </div>
             </div>
@@ -1442,7 +1442,7 @@ export default function HybridFundPlatform() {
             <div className="flex items-center gap-4 mb-6">
               <div className="w-16 h-16 rounded-2xl bg-[#ef4444]/10 flex items-center justify-center text-3xl font-black text-[#ef4444] border border-[#ef4444]/20">C</div>
               <div>
-                <h3 className="text-xl font-bold text-textMain">Yüksek Risk</h3>
+                <h3 className="text-xl font-bold text-textMain">{t("risk.c_title", "Yüksek Risk")}</h3>
                 <span className="text-sm text-textMuted">Yüksek Kazanç Çarpanı</span>
               </div>
             </div>

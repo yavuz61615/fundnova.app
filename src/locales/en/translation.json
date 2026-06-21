@@ -4,8 +4,8 @@
         "market": "Secondary Market",
         "about": "About Us",
         "register": "Register",
-        "risk": "Risk Classes",
-        "support": "Technical Support"
+        "risk": "Review",
+        "support": "There are no projects in this category yet."
     },
     "explore": {
         "title": "Explore Projects",
@@ -28,7 +28,9 @@
         "analysis_3": "No financial return. 100% Social Impact score. Fully transparent budget usage and instant photo reporting.",
         "desc_4": "Creation of a short-term micro-credit pool for SMEs. Regular monthly payment guaranteed.",
         "analysis_4": "Broad-based risk distribution. Automatic default management with platform algorithm. Estimated yield between 15-20% annually.",
-        "no_projects": "There are no projects in this category yet."
+        "no_projects": "Aim:",
+        "target_label": "Aim:",
+        "karz_btn": "Make Karz-i Hasen"
     },
     "market": {
         "title": "Secondary Market (Exchange)",
@@ -76,11 +78,11 @@
         "p2": "Our goal is to provide investors with a secondary market that is transparent and complies with spot market rules; while creating an uninterrupted donation pool for social projects. We are building the financial model of the future by combining debt, equity, and donation models under one roof."
     },
     "dashboard": {
-        "myWallet": "My Blockchain Wallet",
-        "walletAddress": "Smart Wallet Address (Account Abstraction)",
-        "myCertificates": "My Certificates",
-        "sukukType": "Istisna Sukuk • 10 Units",
-        "equityType": "Equity-Based • 5 Lots",
+        "myWallet": "There are no projects in this category yet.",
+        "walletAddress": "Aim:",
+        "myCertificates": "There are no projects in this category yet.",
+        "sukukType": "Aim:",
+        "equityType": "Aim:",
         "review": "Review"
     },
     "support": {
@@ -97,5 +99,73 @@
         "messagePlaceholder": "Please explain your issue in detail...",
         "submit": "Submit Support Request",
         "success": "Your request has been successfully received."
+    },
+    "proj": {
+        "solar_title": "Solar Powered Mobile Water Purification",
+        "solar_desc": "Installation and integration of high-capacity and fully solar-powered mobile water treatment facilities, developed as an alternative to the destroyed water network in Gaza.",
+        "logi_title": "Gulf Logistics Fleet Growth",
+        "logi_desc": "Solar Panel Equipment Purchase",
+        "green_title": "Solar Panel Equipment Purchase",
+        "green_desc": "Supply financing of high-efficiency monocrystalline solar panels and inverter equipment to be used in the new generation solar power plant project with a capacity of 50 MW to be built in North Africa.",
+        "elamel_title": "Gaza Emergency Prefabricated Housing Production",
+        "elamel_desc": "Procurement of basic raw materials and construction materials required for the rapid production of heat-insulated modular prefabricated living spaces resistant to harsh climatic conditions, in order to meet the urgent shelter needs of homeless civilians in Gaza.",
+        "bina_title": "Bina-AI Damage Detection Drone Network",
+        "bina_desc": "PayTech Islamic Wallet",
+        "paytech_title": "PayTech Islamic Wallet",
+        "paytech_desc": "The global launch of an innovative smart spending and digital wallet application that addresses the financial needs of Generation Z, is supported by blockchain infrastructure, has zero interest, ethical investment algorithms and is fully integrated with global payment systems.",
+        "gazatech_title": "GazaTech Mobile Health",
+        "gazatech_desc": "An end-to-end encrypted telemedicine platform that brings together local healthcare personnel in crisis areas and specialist doctors around the world simultaneously, can transmit high-resolution images even in low internet bandwidth, and features a medical AI diagnosis assistant.",
+        "water_title": "Gaza Clean Water Purification Project",
+        "water_desc": "Urgent installation of easy-to-maintain and 100% solar-powered integrated mobile water purification units that will meet the daily clean water needs of 10,000 people in the refugee camps in Gaza, where the drinking water infrastructure has completely collapsed due to the war, and covering the 1-year operating cost.",
+        "edu_title": "Palestinian Children Education Tents",
+        "edu_desc": "Establishing 50 fully-capacity education tents, resistant to harsh weather conditions, illuminated with solar panels, equipped with basic stationery and digital education materials, and providing teacher support funds in order to ensure that children do not fall behind in education in regions where schools were destroyed as a result of the attacks.",
+        "health_title": "Container Polyclinic Network",
+        "health_desc": "Placement of 10 fully equipped mobile container polyclinics with generators and sterilization units, where basic surgical interventions can be performed, at strategic points in conflict zones where existing hospitals have become unusable, and provision of emergency medical consumables.",
+        "psy_title": "Psychosocial Support Center for Children",
+        "psy_desc": "Risk Classification"
+    },
+    "risk": {
+        "title": "Risk Classification",
+        "desc": "All projects listed on the FundNova platform are examined according to international independent auditing standards and classified into three main categories: A, B and C to provide investors with a transparent risk profile.",
+        "a_title": "Low Risk",
+        "a_subtitle": "Regular Return, High Trust",
+        "a_desc": "These are projects exported by well-established companies with strong balance sheets or secured by physical assets (real estate, equipment, etc.).",
+        "b_title": "Medium Risk",
+        "b_subtitle": "Balanced Growth and Dividend",
+        "b_desc": "These are expansion financings for companies in the growth phase or startups that have reached a certain market share.",
+        "c_title": "High Risk",
+        "c_subtitle": "Maximum Growth Potential",
+        "c_desc": "It includes technology startups at the seed or Series A stage, projects with high potential but newly proven product-market fit."
+    },
+    "badge": {
+        "sadaka": "Sadaka-i Cariye",
+        "zekat": "Suitable for Zakat",
+        "health": "Health Assistance",
+        "edu": "Education Fund"
+    },
+    "type": {
+        "istisna": "Exception Sukuk",
+        "icara": "Ijara Sukuk",
+        "emtia": "Commodity Murabaha",
+        "murabaha": "Murabahah",
+        "proptech": "PropTech/AI",
+        "fintech": "FinTech / Generation Z",
+        "healthtech": "HealthTech / Gaza"
+    },
+    "company": {
+        "gaza": "Gaza Infrastructure Inc.",
+        "logi": "LogiSpeed ​​Inc.",
+        "green": "GreenEnergy Ltd.",
+        "elamel": "El-Amel Construction",
+        "seria": "Seed Investment",
+        "tohum": "Seed Investment",
+        "umut": "Gaza Sun of Hope Association",
+        "kudus": "Palestine Independent Healthcare Professionals Association",
+        "filistin": "Palestine Independent Healthcare Professionals Association",
+        "yetim": "Target Multiplier"
+    },
+    "chart": {
+        "growth": "Target Multiplier",
+        "target_multiplier": "Target Multiplier"
     }
 }

@@ -4,8 +4,8 @@
         "market": "Marché Secondaire",
         "about": "À Propos",
         "register": "S'inscrire",
-        "risk": "Risk Classes",
-        "support": "Technical Support"
+        "risk": "Classes de risque",
+        "support": "Assistance technique"
     },
     "explore": {
         "title": "Explorer les Projets",
@@ -28,7 +28,9 @@
         "analysis_3": "Aucun rendement financier. Score d'impact social de 100%. Utilisation du budget entièrement transparente et rapports photo instantanés.",
         "desc_4": "Création d'un pool de micro-crédits à court terme pour les PME. Paiement mensuel régulier garanti.",
         "analysis_4": "Répartition large des risques. Gestion automatique des défauts avec algorithme de plateforme. Rendement estimé entre 15 et 20% par an.",
-        "no_projects": "There are no projects in this category yet."
+        "no_projects": "But:",
+        "target_label": "But:",
+        "karz_btn": "Faire Karz-i Hasen"
     },
     "market": {
         "title": "Marché Secondaire (Bourse)",
@@ -76,12 +78,12 @@
         "p2": "Notre objectif est de fournir aux investisseurs un marché secondaire transparent et conforme aux règles du marché au comptant ; tout en créant un pool de dons ininterrompu pour les projets sociaux. Nous construisons le modèle financier du futur en combinant la dette, les capitaux propres et les modèles de dons sous un même toit."
     },
     "dashboard": {
-        "myWallet": "My Blockchain Wallet",
-        "walletAddress": "Smart Wallet Address (Account Abstraction)",
-        "myCertificates": "My Certificates",
-        "sukukType": "Istisna Sukuk • 10 Units",
-        "equityType": "Equity-Based • 5 Lots",
-        "review": "Review"
+        "myWallet": "Mon portefeuille Blockchain",
+        "walletAddress": "Adresse du portefeuille intelligent",
+        "myCertificates": "Mes certificats",
+        "sukukType": "Basé sur le partage • 5 lots",
+        "equityType": "Revoir",
+        "review": "Il n'y a pas encore de projets dans cette catégorie."
     },
     "support": {
         "desc": "How can we help you? Please fill out the form completely.",
@@ -97,5 +99,73 @@
         "messagePlaceholder": "Please explain your issue in detail...",
         "submit": "Submit Support Request",
         "success": "Your request has been successfully received."
+    },
+    "proj": {
+        "solar_title": "Purification d'eau mobile à énergie solaire",
+        "solar_desc": "Installation et intégration d'installations mobiles de traitement de l'eau de grande capacité et entièrement alimentées par l'énergie solaire, développées comme alternative au réseau d'eau détruit à Gaza.",
+        "logi_title": "Croissance de la flotte logistique du Golfe",
+        "logi_desc": "Financement de l'achat de 50 véhicules utilitaires de nouvelle génération dotés de moteurs hybrides respectueux de l'environnement grâce à la méthode Ijara Sukuk, afin de soutenir les opérations logistiques de commerce électronique en pleine expansion dans la région du Golfe.",
+        "green_title": "Achat d'équipement de panneaux solaires",
+        "green_desc": "Fournir le financement de panneaux solaires monocristallins à haut rendement et d'équipements d'onduleurs qui seront utilisés dans le projet de centrale solaire de nouvelle génération d'une capacité de 50 MW qui sera construit en Afrique du Nord.",
+        "elamel_title": "Production de logements préfabriqués d’urgence à Gaza",
+        "elamel_desc": "Achat de matières premières de base et de matériaux de construction nécessaires à la production rapide d'espaces de vie modulaires préfabriqués, calorifugés et résistants aux conditions climatiques difficiles, afin de répondre aux besoins urgents en abris des civils sans abri à Gaza.",
+        "bina_title": "Réseau de drones de détection des dommages Bina-AI",
+        "bina_desc": "Développer et mettre en service une flotte de véhicules aériens sans pilote (drones) entièrement autonomes capables d'effectuer une cartographie 3D basée sur l'intelligence artificielle, une détection des dommages structurels et une analyse des débris afin d'accélérer la reconstruction des bâtiments détruits dans les zones de catastrophe et de guerre.",
+        "paytech_title": "Portefeuille islamique PayTech",
+        "paytech_desc": "Le lancement mondial d'une application innovante de dépenses intelligentes et de portefeuille numérique qui répond aux besoins financiers de la génération Z, est soutenue par une infrastructure blockchain, a un intérêt nul, des algorithmes d'investissement éthiques et est entièrement intégrée aux systèmes de paiement mondiaux.",
+        "gazatech_title": "Santé mobile GazaTech",
+        "gazatech_desc": "Une plate-forme de télémédecine cryptée de bout en bout qui rassemble simultanément le personnel de santé local dans les zones de crise et des médecins spécialistes du monde entier, peut transmettre des images haute résolution même avec une faible bande passante Internet et dispose d'un assistant de diagnostic médical par IA.",
+        "water_title": "Projet de purification de l'eau potable à Gaza",
+        "water_desc": "Installation urgente d'unités mobiles intégrées de purification d'eau, faciles à entretenir et alimentées à 100 % par l'énergie solaire, qui répondront aux besoins quotidiens en eau potable de 10 000 personnes dans les camps de réfugiés de Gaza, où l'infrastructure d'eau potable s'est complètement effondrée à cause de la guerre, et couvriront les frais de fonctionnement d'un an.",
+        "edu_title": "Tentes éducatives pour enfants palestiniens",
+        "edu_desc": "Établir 50 tentes éducatives à pleine capacité, résistantes aux conditions climatiques difficiles, éclairées par des panneaux solaires, équipées de papeterie de base et de matériel pédagogique numérique, et fournir des fonds de soutien aux enseignants afin de garantir que les enfants ne soient pas à la traîne en matière d'éducation dans les régions où les écoles ont été détruites à la suite des attaques.",
+        "health_title": "Réseau de polycliniques de conteneurs",
+        "health_desc": "Mise en place de 10 polycliniques mobiles entièrement équipées de générateurs et d'unités de stérilisation, où des interventions chirurgicales de base peuvent être effectuées, à des points stratégiques des zones de conflit où les hôpitaux existants sont devenus inutilisables, et fourniture de consommables médicaux d'urgence.",
+        "psy_title": "Centre de soutien psychosocial pour enfants",
+        "psy_desc": "Construction et exploitation d'un centre de soutien psychosocial permanent qui fournira un traitement à long terme du trouble de stress post-traumatique, des ateliers d'art-thérapie et des terrains de jeux sécurisés avec des pédopsychiatres et des pédagogues experts pour des milliers d'orphelins exposés aux effets dévastateurs de la guerre."
+    },
+    "risk": {
+        "title": "Classification des risques",
+        "desc": "Tous les projets répertoriés sur la plateforme FundNova sont examinés selon les normes internationales d'audit indépendantes et classés en trois catégories principales : A, B et C afin de fournir aux investisseurs un profil de risque transparent.",
+        "a_title": "Faible risque",
+        "a_subtitle": "Retour régulier, haute confiance",
+        "a_desc": "Il s’agit de projets exportés par des entreprises bien implantées et dotées de bilans solides ou sécurisées par des actifs physiques (immobilier, équipements…).",
+        "b_title": "Risque moyen",
+        "b_subtitle": "Croissance et dividendes équilibrés",
+        "b_desc": "Il s’agit de financements d’expansion destinés à des entreprises en phase de croissance ou à des startups ayant atteint une certaine part de marché.",
+        "c_title": "Risque élevé",
+        "c_subtitle": "Potentiel de croissance maximal",
+        "c_desc": "Il comprend des startups technologiques au stade d'amorçage ou de série A, des projets à fort potentiel mais dont l'adéquation produit-marché a récemment fait ses preuves."
+    },
+    "badge": {
+        "sadaka": "Sadaka-i Cariye",
+        "zekat": "Convient pour la Zakat",
+        "health": "Assistance santé",
+        "edu": "Fonds d'éducation"
+    },
+    "type": {
+        "istisna": "Ijara Sukuk",
+        "icara": "Ijara Sukuk",
+        "emtia": "Mourabaha des produits de base",
+        "murabaha": "Mourabaha",
+        "proptech": "PropTech/IA",
+        "fintech": "FinTech / Génération Z",
+        "healthtech": "Technologies de la santé / Gaza"
+    },
+    "company": {
+        "gaza": "Gaza Infrastructure Inc.",
+        "logi": "LogiSpeed ​​​​Inc.",
+        "green": "Énergie verte Ltd.",
+        "elamel": "El-Amel Construction",
+        "seria": "Série A",
+        "tohum": "Investissement de démarrage",
+        "umut": "Association Gaza Soleil d’Espoir",
+        "kudus": "Coopérative de reconstruction et d'éducation de Jérusalem",
+        "filistin": "Association palestinienne indépendante des professionnels de la santé",
+        "yetim": "Fondation de solidarité pour les orphelins de Gaza"
+    },
+    "chart": {
+        "growth": "Projection de croissance (5 ans)",
+        "target_multiplier": "Multiplicateur cible"
     }
 }
