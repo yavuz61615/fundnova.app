@@ -432,6 +432,47 @@ export default function HybridFundPlatform() {
     );
   };
 
+  /* ── SUPPORT TAB ── */
+  const SupportTab = () => (
+    <div className="container py-16 animate-in fade-in duration-500">
+      <div className="mb-12 text-center max-w-3xl mx-auto">
+        <h2 className="fluid-h2 font-black text-textMain mb-4">{t('nav.support', 'Teknik Destek')}</h2>
+        <p className="text-textMuted text-lg">{t('support.desc', 'Size nasıl yardımcı olabiliriz? Lütfen aşağıdaki formu eksiksiz doldurun.')}</p>
+      </div>
+      <div className="max-w-2xl mx-auto bg-surface border border-borderBase p-8 rounded-2xl shadow-sm">
+        <form className="space-y-6" onSubmit={(e) => { e.preventDefault(); alert(t('support.success', 'Talebiniz başarıyla alındı.')); }}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label className="block text-xs font-bold text-textMuted uppercase tracking-wider mb-2">{t('support.customerNo', 'Müşteri No')}</label>
+              <input type="text" className="input" placeholder="12345678" required />
+            </div>
+            <div>
+              <label className="block text-xs font-bold text-textMuted uppercase tracking-wider mb-2">{t('support.email', 'E-posta Adresi')}</label>
+              <input type="email" className="input" placeholder="mail@example.com" required />
+            </div>
+          </div>
+          <div>
+            <label className="block text-xs font-bold text-textMuted uppercase tracking-wider mb-2">{t('support.issueArea', 'Destek İstediğiniz Alan')}</label>
+            <select className="input" required>
+              <option value="">{t('support.selectArea', 'Lütfen bir alan seçin')}</option>
+              <option value="investment">{t('support.areaInvestment', 'Yatırım ve Fonlama')}</option>
+              <option value="account">{t('support.areaAccount', 'Hesap ve Profil')}</option>
+              <option value="technical">{t('support.areaTechnical', 'Teknik Sorunlar')}</option>
+              <option value="other">{t('support.areaOther', 'Diğer Konular')}</option>
+            </select>
+          </div>
+          <div>
+            <label className="block text-xs font-bold text-textMuted uppercase tracking-wider mb-2">{t('support.message', 'Sorununuz / Mesajınız')}</label>
+            <textarea className="input min-h-[150px] resize-y" placeholder={t('support.messagePlaceholder', 'Sorununuzu detaylı açıklayın...')} required></textarea>
+          </div>
+          <button type="submit" className="w-full btn-primary py-4 text-lg font-bold">
+            {t('support.submit', 'Destek Talebi Gönder')}
+          </button>
+        </form>
+      </div>
+    </div>
+  );
+
   /* ── HEADER ── */
   const Header = () => (
     <header className="nav-glass fixed top-0 w-full z-50">
@@ -454,8 +495,8 @@ export default function HybridFundPlatform() {
               { id: 'equity', label: t('nav.equity') },
               { id: 'charity', label: t('nav.charity') },
               { id: 'exchange', label: t('nav.exchange') },
-              { id: 'risk', label: 'Risk Sınıfları' },
-              { id: 'support', label: 'Teknik Destek' },
+              { id: 'risk', label: t('nav.risk', 'Risk Sınıfları') },
+              { id: 'support', label: t('nav.support', 'Teknik Destek') },
             ].map(tab => (
               <button
                 key={tab.id}
@@ -1051,7 +1092,7 @@ export default function HybridFundPlatform() {
           <div className="animate-in fade-in slide-in-from-bottom-4">
             <div className="mb-12">
               <h3 className="text-2xl font-black text-textMain mb-6 flex items-center">
-                <Wallet className="w-6 h-6 mr-3 text-primary" /> Blokzincir Cüzdanım
+                <Wallet className="w-6 h-6 mr-3 text-primary" /> {t('dashboard.myWallet', 'Blokzincir Cüzdanım')}
               </h3>
               <div className="card bg-surface border border-borderBase shadow-sm">
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 pb-6 border-b border-borderBase gap-4">
@@ -1060,14 +1101,14 @@ export default function HybridFundPlatform() {
                       <span className="text-3xl font-black text-textMain font-mono">$1,250.00</span>
                    </div>
                    <div className="md:text-right">
-                      <span className="text-xs font-bold text-textMuted uppercase tracking-widest block mb-1">Akıllı Cüzdan Adresi (Account Abstraction)</span>
+                      <span className="text-xs font-bold text-textMuted uppercase tracking-widest block mb-1">{t('dashboard.walletAddress', 'Akıllı Cüzdan Adresi (Account Abstraction)')}</span>
                       <span className="text-sm font-mono text-primary bg-primary/10 px-3 py-1 rounded-lg">0x71C7...8b098</span>
                    </div>
                 </div>
 
                 <div>
                   <h4 className="text-lg font-bold text-textMain mb-4 flex items-center">
-                    <ShieldCheck className="w-5 h-5 mr-2 text-primary" /> Sertifikalarım
+                    <ShieldCheck className="w-5 h-5 mr-2 text-primary" /> {t('dashboard.myCertificates', 'Sertifikalarım')}
                   </h4>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="bg-background border border-borderBase rounded-xl p-4 flex items-center justify-between hover:border-primary transition-colors">
@@ -1077,10 +1118,10 @@ export default function HybridFundPlatform() {
                           </div>
                           <div>
                              <span className="text-sm font-bold text-textMain block line-clamp-1">GZ-SUK (Gazze Mobil Su Arıtma)</span>
-                             <span className="text-xs text-textMuted">İstisna Sukuk • 10 Adet</span>
+                             <span className="text-xs text-textMuted">{t('dashboard.sukukType', 'İstisna Sukuk • 10 Adet')}</span>
                           </div>
                        </div>
-                       <button className="text-primary hover:text-primary/80 text-sm font-bold bg-primary/10 px-3 py-1.5 rounded-lg flex-shrink-0 ml-2">İncele</button>
+                       <button className="text-primary hover:text-primary/80 text-sm font-bold bg-primary/10 px-3 py-1.5 rounded-lg flex-shrink-0 ml-2">{t('dashboard.review', 'İncele')}</button>
                     </div>
                     
                     <div className="bg-background border border-borderBase rounded-xl p-4 flex items-center justify-between hover:border-primary transition-colors">
@@ -1657,6 +1698,7 @@ export default function HybridFundPlatform() {
         {activeTab === 'charity' && <CharityTab />}
         {activeTab === 'exchange' && <ExchangeTab />}
         {activeTab === 'risk' && <RiskTab />}
+        {activeTab === 'support' && <SupportTab />}
         {activeTab === 'about' && <AboutTab />}
         {activeTab === 'register' && <RegisterTab />}
         {activeTab === 'dashboard' && <DashboardTab />}

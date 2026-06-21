@@ -128,7 +128,7 @@ export default function Explore() {
         
         {filteredProjects.length === 0 && (
           <div style={{ textAlign: 'center', padding: '4rem', color: 'var(--color-text-muted)', fontSize: '1.2rem' }}>
-            Bu kategoride henüz proje bulunmamaktadır.
+            {t('explore.no_projects', 'Bu kategoride henüz proje bulunmamaktadır.')}
           </div>
         )}
       </div>
